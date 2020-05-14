@@ -5,7 +5,7 @@ A simple application built to put in practice the OOP concepts in Java ☕
 Resistência
 
 ## Integrantes:
-| Integrante | RA | Git | 
+| Integrante | RA | GitHub | 
 | ------------------- | ------------------- | ------------------- |
 |André Sacilotto (Líder) | 231396 | github.com/231396 | 
 |Gabriel Gomes De Santana | 234822 | github.com/gabrielsanttana | 
