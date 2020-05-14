@@ -1,10 +1,10 @@
-# poo-assignment
+## poo-assignment
 A simple application built to put in practice the OOP concepts in Java ☕
 
-# Nome do grupo
+## Nome do grupo
 Resistência
 
-# Integrantes:
+## Integrantes:
 | Integrante | RA | Git | 
 | ------------------- | ------------------- | ------------------- |
 |André Sacilotto (Líder) | 231396 | github.com/231396 | 
