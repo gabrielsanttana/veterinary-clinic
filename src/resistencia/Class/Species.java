@@ -1,22 +1,22 @@
 package resistencia;
 
 public class Species {
-    private String spacieName;
+    private String spaciesName;
 
     public Species() {
 
     }
 
-    public Species(String spacieName) {
-        this.spacieName = spacieName;
+    public Species(String spaciesName) {
+        this.spaciesName = spaciesName;
     }
 
-    public String getSpacieName() {
-        return this.spacieName;
+    public String getspaciesName() {
+        return this.spaciesName;
     }
 
-    public void setSpacieName(String spacieName) {
-        this.spacieName = spacieName;
+    public void setspaciesName(String spaciesName) {
+        this.spaciesName = spaciesName;
     }
 
 }
