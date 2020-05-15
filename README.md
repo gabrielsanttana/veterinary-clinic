@@ -1,10 +1,17 @@
 ## poo-assignment
 A simple application built to put in practice the OOP concepts in Java ☕
 
+## Git Commands
+git add .  
+git commit -m "_comment_"  
+git pull (baixa)  
+git push (envia)  
+git checkout _branch_  
+
 ## Nome do grupo
 Resistência
 
-## Integrantes:
+## Integrantes
 | Integrante | RA | GitHub | 
 | ------------------- | ------------------- | ------------------- |
 |André Sacilotto (Líder) | 231396 | github.com/231396 | 
