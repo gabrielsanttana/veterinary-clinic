@@ -29,7 +29,7 @@ public class Consulta
 		return "";		
 	}
 	
-	public String viewConsulta() 
+	public String viewConsult() 
 	{
 		return "";		
 	}
