@@ -1,13 +1,9 @@
 package resistencia;
 
 public class Animal {
-  String animalName;
-  int animalAge;
-  int animalSex;
-
-  private viewAnimal() {}
-
-  private consultAnimal() {}
+  private String animalName;
+  private int animalAge;
+  private int animalSex;
 
   private String getAnimalName() {
     return this.animalName;
@@ -32,4 +28,8 @@ public class Animal {
   private setAnimalSex(int sex) {
     this.animalSex = sex;
   }
+
+  private viewAnimal() {}
+
+  private consultAnimal() {}
 }
