@@ -1,6 +1,9 @@
 ## poo-assignment
 A simple application built to put in practice the OOP concepts in Java ☕
 
+## Trello
+https://trello.com/b/ypWv7fpf/poo-assignment
+
 ## Git Commands
 git add .  
 git commit -m "_comment_"  
