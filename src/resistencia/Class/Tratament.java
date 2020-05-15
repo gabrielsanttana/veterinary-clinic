@@ -1,10 +1,10 @@
 import java.util.Date;
 
-public class Tratament {
+public class Treatment {
 	private Date startDate;
 	private Date endDate;
 	
-	private Tratament(Date startDate, Date endDate) {
+	private Treatment(Date startDate, Date endDate) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -23,9 +23,9 @@ public class Tratament {
 		this.endDate = endDate;
 	}
 	
-  public listAppointment() {}
+  public String listAppointment() {}
   
-  public appointmentTratament() {}
+  public String appointmentTreatment() {}
   
-	public registerTratament() {}
+	public int registerTreatment() {}
 }
