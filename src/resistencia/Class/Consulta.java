@@ -1,5 +1,7 @@
 package resistencia.Class;
 
+import java.util.Date;
+
 public class Consulta 
 {
 	private Date consultaDate;
