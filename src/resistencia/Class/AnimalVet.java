@@ -1,42 +1,41 @@
 package resistencia;
 
 public class AnimalVet {
-    String vet_name;
-    String vet_address;
-    String vet_phone;
+    String vetName;
+    String vetAddress;
+    String vetPhone;
 
-
-    public void AnimalVet() {
+    public AnimalVet() {
 
     }
 
-    public void AnimalVet(String vet_name, String vet_address, String vet_phone) {
-    	this.spacie_name = vet_name;
-    	this.spacie_name = vet_address;
-    	this.spacie_name = vet_phone;
+    public AnimalVet(String vetName, String vetAddress, String vetPhone) {
+        this.vetName = vetName;
+        this.vetAddress = vetAddress;
+        this.vetPhone = vetPhone;
     }
 
     public String getVetName() {
-    	return this.vet_name;
+        return this.vetName;
     }
 
-    public void setVetName(String vet_name) {
-    	this.vet_name = vet_name;
+    public void setVetName(String vetName) {
+        this.vetName = vetName;
     }
 
     public String getVetAddress() {
-    	return this.vet_address;
+        return this.vetAddress;
     }
 
-    public void setVetAddress(String vet_address) {
-    	this.vet_address = vet_address;
+    public void setVetAddress(String vetAddress) {
+        this.vetAddress = vetAddress;
     }
 
     public String getVetPhone() {
-    	return this.vet_phone;
+        return this.vetPhone;
     }
 
-    public void setVetPhone(String vet_phone) {
-    	this.vet_phone = vet_phone;
+    public void setVetPhone(String vetPhone) {
+        this.vetPhone = vetPhone;
     }
 }
