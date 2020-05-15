@@ -4,32 +4,58 @@ public class Animal {
   private String animalName;
   private int animalAge;
   private int animalSex;
+  private Tratament[] trataments;
 
-  private String getAnimalName() {
+  public Animal() {
+  }
+
+  public Animal(String animalName, int animalAge, int animalSex, Tratament[] trataments) {
+    this.animalName = animalName;
+    this.animalAge = animalAge;
+    this.animalSex = animalSex;
+    this.trataments = trataments;
+  }
+
+  public void String
+
+  getAnimalName() {
     return this.animalName;
   }
 
-  private setAnimalName(String name) {
+  public void setAnimalName(String name) {
     this.animalName = name;
   }
 
-  private int getAnimalAge() {
+  public int getAnimalAge() {
     return this.animalAge;
   }
 
-  private setAnimalAge(int age) {
+  public void setAnimalAge(int age) {
     this.animalAge = age;
   }
 
-  private int getAnimalSex() {
+  public int getAnimalSex() {
     return this.animalSex;
   }
 
-  private setAnimalSex(int sex) {
+  public void setAnimalSex(int sex) {
     this.animalSex = sex;
   }
 
-  private viewAnimal() {}
+  public Tratament[] getTrataments() {
+    return this.trataments;
+  }
 
-  private consultAnimal() {}
+  public void setTrataments(Tratament[] trataments) {
+    this.trataments = trataments;
+  }
+
+  public String viewAnimal() {
+    return "";
+  }
+
+  public String consultAnimal() {
+    return "";
+
+  }
 }

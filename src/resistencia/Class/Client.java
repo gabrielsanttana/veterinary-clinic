@@ -1,33 +1,35 @@
 package resistencia;
 
+import resistencia.Animal;
+
 public class Client {
-    
-    private String name;
-    private String address;
-    private String tel;
-    private double cep;
-    private String email;
-    
-    public Client() {
-    	
-    }
-    
-    
-    public Client(String name, String address, String tel, double cep, String email) {
-    	this.name = name;
-    	this.address = address;
-    	this.tel = tel;
-    	this.cep = cep;
-    	this.email = email;
-    }
-    
-    public int Reg_Cli() {
-    	return 0;
-    }
-    
-    public String Con_Cli() {
-    	return "";
-    }
+
+	private String name;
+	private String address;
+	private String tel;
+	private double cep;
+	private String email;
+	private Animal[] animals;
+
+	public Client() {
+
+	}
+
+	public Client(String name, String address, String tel, double cep, String email, Animal[] animals) {
+		this.name = name;
+		this.address = address;
+		this.tel = tel;
+		this.cep = cep;
+		this.email = email;
+	}
+
+	public int Reg_Cli() {
+		return 0;
+	}
+
+	public String Con_Cli() {
+		return "";
+	}
 
 	public String getName() {
 		return name;
@@ -68,6 +70,13 @@ public class Client {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-    
+
+	public Animal[] getAnimals() {
+		return animals;
+	}
+
+	public void setAnimals(Animal[] animals) {
+		this.animals = animals;
+	}
 
 }

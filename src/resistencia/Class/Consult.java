@@ -2,11 +2,22 @@ package resistencia.Class;
 
 import java.util.Date;
 
-public class Consult 
-{
+public class Consult {
 	private Date consultDate;
 	private String historic;
-	
+	private AnimalVet animalVet;
+	private Exam exam;
+
+	public Consult() {
+	}
+
+	public Consult(Date consultDate, String historic, AnimalVet animalVet, Exam exam) {
+		this.consultDate = consultDate;
+		this.historic = historic;
+		this.animalVet = animalVet;
+
+	}
+
 	public String getHistoric() {
 		return historic;
 	}
@@ -21,21 +32,33 @@ public class Consult
 
 	public void setConsultDate(Date consultaDate) {
 		this.consultDate = consultaDate;
-	}		
-	
-	
-	public String listConsults()
-	{
-		return "";		
 	}
-	
-	public String viewConsult() 
-	{
-		return "";		
+
+	public AnimalVet getAnimalVet() {
+		return animalVet;
 	}
-	
-	public int registryConsult() 
-	{
-		return 0;		
+
+	public void setAnimalVet(AnimalVet animalVet) {
+		this.animalVet = animalVet;
+	}
+
+	public Exam getExam() {
+		return exam;
+	}
+
+	public void setExam(Exam exam) {
+		this.exam = exam;
+	}
+
+	public String listConsults() {
+		return "";
+	}
+
+	public String viewConsult() {
+		return "";
+	}
+
+	public int registryConsult() {
+		return 0;
 	}
 }
