@@ -1,24 +1,22 @@
-package resistencia;
+package resistencia.Class;
 
 public class Animal {
   private String animalName;
   private int animalAge;
   private int animalSex;
-  private Tratament[] trataments;
+  private Treatment[] treataments;
 
   public Animal() {
   }
 
-  public Animal(String animalName, int animalAge, int animalSex, Tratament[] trataments) {
+  public Animal(String animalName, int animalAge, int animalSex, Treatment[] trataments) {
     this.animalName = animalName;
     this.animalAge = animalAge;
     this.animalSex = animalSex;
-    this.trataments = trataments;
+    this.setTreataments(trataments);
   }
 
-  public void String
-
-  getAnimalName() {
+  public String getAnimalName() {
     return this.animalName;
   }
 
@@ -42,12 +40,12 @@ public class Animal {
     this.animalSex = sex;
   }
 
-  public Tratament[] getTrataments() {
-    return this.trataments;
+  public Treatment[] getTrataments() {
+    return this.treataments;
   }
 
-  public void setTrataments(Tratament[] trataments) {
-    this.trataments = trataments;
+  public void setTrataments(Treatment[] trataments) {
+    this.treataments = trataments;
   }
 
   public String viewAnimal() {
@@ -58,4 +56,12 @@ public class Animal {
     return "";
 
   }
+
+public Treatment[] getTreataments() {
+	return treataments;
+}
+
+public void setTreataments(Treatment[] treataments) {
+	this.treataments = treataments;
+}
 }

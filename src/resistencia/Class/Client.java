@@ -1,6 +1,4 @@
-package resistencia;
-
-import resistencia.Animal;
+package resistencia.Class;
 
 public class Client {
 

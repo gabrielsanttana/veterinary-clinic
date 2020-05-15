@@ -1,14 +1,14 @@
-package resistencia;
+package resistencia.Class;
 
 public class Exam {
     String exam_desc;
 
 
-    public void Exam() {
+    public Exam() {
 
     }
 
-    public void Exam(String exam_desc) {
+    public Exam(String exam_desc) {
     	this.exam_desc = exam_desc;
     }
 
