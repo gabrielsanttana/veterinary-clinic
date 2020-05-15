@@ -1,9 +1,9 @@
 package resistencia;
 
 public class AnimalVet {
-    String vetName;
-    String vetAddress;
-    String vetPhone;
+    private String vetName;
+    private String vetAddress;
+    private String vetPhone;
 
     public AnimalVet() {
 
