@@ -24,17 +24,17 @@ public class Consulta
 	}		
 	
 	
-	public String listaConsulta()
+	public String listConsults()
 	{
 		return "";		
 	}
 	
-	public String verConsulta() 
+	public String viewConsulta() 
 	{
 		return "";		
 	}
 	
-	public int registraConsulta() 
+	public int registryConsult() 
 	{
 		return 0;		
 	}
