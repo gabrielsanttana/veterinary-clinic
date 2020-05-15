@@ -4,37 +4,37 @@ import java.util.Date;
 
 public class Consulta 
 {
-	private Date consultaDate;
-	private String historico;
+	private Date consultDate;
+	private String historic;
 	
-	public String getHistorico() {
-		return historico;
+	public String getHistoric() {
+		return historic;
 	}
 
-	public void setHistorico(String historico) {
-		this.historico = historico;
+	public void setHistoric(String historico) {
+		this.historic = historico;
 	}
 
-	public Date getConsultaDate() {
-		return consultaDate;
+	public Date getConsultDate() {
+		return consultDate;
 	}
 
-	public void setConsultaDate(Date consultaDate) {
-		this.consultaDate = consultaDate;
+	public void setConsultDate(Date consultaDate) {
+		this.consultDate = consultaDate;
 	}		
 	
 	
-	public String Lista_Consulta()
+	public String listaConsulta()
 	{
 		return "";		
 	}
 	
-	public String Ver_Consulta() 
+	public String verConsulta() 
 	{
 		return "";		
 	}
 	
-	public int Registra_Consulta() 
+	public int registraConsulta() 
 	{
 		return 0;		
 	}
