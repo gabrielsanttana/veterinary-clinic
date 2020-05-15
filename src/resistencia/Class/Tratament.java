@@ -12,20 +12,29 @@ public class Treatment {
 	
 	public Date getDatStart() {
 		return startDate;
-	}
+  }
+  
 	public void setDatStart(Date startDate) {
 		this.startDate = startDate;
-	}
+  }
+  
 	public Date getendDate() {
 		return endDate;
-	}
+  }
+  
 	public void setendDate(Date endDate) {
 		this.endDate = endDate;
 	}
 	
-  public String listAppointment() {}
+  public String listAppointment() {
+    return "";
+  }
   
-  public String appointmentTreatment() {}
+  public String appointmentTreatment() {
+    return "";
+  }
   
-	public int registerTreatment() {}
+	public int registerTreatment() {
+    return 0;
+  }
 }
