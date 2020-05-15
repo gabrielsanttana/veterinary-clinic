@@ -1,13 +1,16 @@
 package resistencia;
 
 public class Client {
-    int id;
     
     private String name;
     private String address;
     private String tel;
     private double cep;
     private String email;
+    
+    public Client() {
+    	
+    }
     
     
     public Client(String name, String address, String tel, double cep, String email) {
