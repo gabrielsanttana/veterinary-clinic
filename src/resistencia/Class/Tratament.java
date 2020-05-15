@@ -1,40 +1,31 @@
 import java.util.Date;
 
 public class Tratament {
+	private Date startDate;
+	private Date endDate;
 	
-	private Date datStart;
-	private Date dateEnd;
-	
-	
-	
-	private Tratament(Date datStart, Date dateEnd) {
+	private Tratament(Date startDate, Date endDate) {
 		super();
-		this.datStart = datStart;
-		this.dateEnd = dateEnd;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 	
 	public Date getDatStart() {
-		return datStart;
+		return startDate;
 	}
-	public void setDatStart(Date datStart) {
-		this.datStart = datStart;
+	public void setDatStart(Date startDate) {
+		this.startDate = startDate;
 	}
-	public Date getDateEnd() {
-		return dateEnd;
+	public Date getendDate() {
+		return endDate;
 	}
-	public void setDateEnd(Date dateEnd) {
-		this.dateEnd = dateEnd;
+	public void setendDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	
-	public String listAppointment() {
-	
-	}
-	public String appointmentTratament() {
-		
-	}
-	public int registerTratament() {
-		
-	}
-		
-
+  public listAppointment() {}
+  
+  public appointmentTratament() {}
+  
+	public registerTratament() {}
 }
