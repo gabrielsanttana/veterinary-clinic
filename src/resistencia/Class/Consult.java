@@ -2,7 +2,7 @@ package resistencia.Class;
 
 import java.util.Date;
 
-public class Consulta 
+public class Consult 
 {
 	private Date consultDate;
 	private String historic;
