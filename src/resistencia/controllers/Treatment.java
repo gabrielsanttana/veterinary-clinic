@@ -1,3 +1,5 @@
+package resistencia.Class;
+
 import java.util.Date;
 
 public class Treatment {

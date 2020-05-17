@@ -1,4 +1,4 @@
-package resistencia;
+package resistencia.Class;
 
 public class Species {
     private String speciesName;
