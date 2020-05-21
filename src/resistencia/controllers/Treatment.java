@@ -1,4 +1,4 @@
-package resistencia.Class;
+package resistencia.controllers;
 
 import java.util.Date;
 
