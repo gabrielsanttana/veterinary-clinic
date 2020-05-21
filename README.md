@@ -9,8 +9,10 @@ git add .
 git commit -m "_comment_"  
 git pull (baixa)  
 git push (envia)  
-git checkout _branchName_  
-git branch _branchName_
+git checkout _branchName/master_  
+git branch _branchName_  
+git branch -d <branchname>  
+git push --set-upstream origin _branchName_  
 
 ## Nome do grupo
 Resistência
