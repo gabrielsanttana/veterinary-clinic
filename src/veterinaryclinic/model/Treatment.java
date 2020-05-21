@@ -1,4 +1,4 @@
-package resistencia.model;
+package veterinaryclinic.model;
 
 import java.util.Date;
 

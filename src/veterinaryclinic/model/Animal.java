@@ -1,4 +1,4 @@
-package resistencia.model;
+package veterinaryclinic.model;
 
 public class Animal {
   private String animalName;

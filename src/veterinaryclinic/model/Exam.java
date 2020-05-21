@@ -1,4 +1,4 @@
-package resistencia.model;
+package veterinaryclinic.model;
 
 public class Exam {
     String exam_desc;
