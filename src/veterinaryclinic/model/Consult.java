@@ -5,16 +5,16 @@ import java.util.Date;
 public class Consult {
 	private Date consultDate;
 	private String historic;
-	private AnimalVet animalVet;
+	private Veterinary veterinary;
 	private Exam exam;
 
 	public Consult() {
 	}
 
-	public Consult(Date consultDate, String historic, AnimalVet animalVet, Exam exam) {
+	public Consult(Date consultDate, String historic, Veterinary veterinary, Exam exam) {
 		this.consultDate = consultDate;
 		this.historic = historic;
-		this.animalVet = animalVet;
+		this.veterinary = veterinary;
 
 	}
 
@@ -34,12 +34,12 @@ public class Consult {
 		this.consultDate = consultaDate;
 	}
 
-	public AnimalVet getAnimalVet() {
-		return animalVet;
+	public Veterinary vetveterinary() {
+		return veterinary;
 	}
 
-	public void setAnimalVet(AnimalVet animalVet) {
-		this.animalVet = animalVet;
+	public void setVeterinary(Veterinary veterinary) {
+		this.veterinary = veterinary;
 	}
 
 	public Exam getExam() {
