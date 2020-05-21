@@ -1,4 +1,4 @@
-package resistencia.controllers;
+package resistencia.model;
 
 public class Animal {
   private String animalName;

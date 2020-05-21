@@ -1,4 +1,4 @@
-package resistencia.controllers;
+package resistencia.model;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package resistencia.controllers;
+package resistencia.model;
 
 public class AnimalVet {
     private String vetName;
