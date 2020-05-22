@@ -8,10 +8,11 @@ public class Treatment {
 	private Date startDate;
 	private Date endDate;
 	private List<Consult> listConsult; 
+	private int id;
 	
     
 	
-	public Treatment(Date startDate, Date endDate, List<Consult> listConsult) {
+	public Treatment(Date startDate, Date endDate) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -50,4 +51,15 @@ public class Treatment {
 	public int registerTreatment() {
     return 0;
   }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
+	
 }
