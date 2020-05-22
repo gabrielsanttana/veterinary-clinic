@@ -1,8 +1,8 @@
-package controller;
+package veterinaryclinic.controller;
 
 import java.util.List;
 import java.util.Observer;
-import model.ClienteDAO;
+import veterinaryclinic.model.*;
 
 /**
  *
@@ -13,11 +13,11 @@ public class Controller {
         ClienteDAO.getInstance().addObserver(observer);
     }
     
-    public static void addCliente(String nome, String endereco, String telefone, String cep){
-        ClienteDAO.getInstance().addCliente(nome, endereco, telefone, cep);
+    public static void addCliente(String nome, String endereco, String telefone, String cep, String email){
+        ClienteDAO.getInstance().addCliente(nome, endereco, telefone, cep, email);
     }
     
-    public static List getAllClientes(){
+    public static List<Client> getAllClientes(){
         return ClienteDAO.getInstance().getAllClientes();
     }
 }
