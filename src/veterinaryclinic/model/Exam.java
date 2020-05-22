@@ -1,14 +1,16 @@
 package model;
 
 public class Exam {
-    String exam_desc;
+    private String exam_desc;
+    private int id;
 
 
     public Exam() {
 
     }
 
-    public Exam(String exam_desc) {
+    public Exam(int id,String exam_desc) {
+    	this.id = id;
     	this.exam_desc = exam_desc;
     }
 
@@ -19,4 +21,14 @@ public class Exam {
     public void setExamDesc(String exam_desc) {
     	this.exam_desc = exam_desc;
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+    
+    
 }

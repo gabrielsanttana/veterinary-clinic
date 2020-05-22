@@ -32,8 +32,8 @@ public class SpeciesDAO extends Observable{
     // Create
     public void addSpecies(String speciesName){
     	Species species = new Species(id,speciesName);
-        id++;
         listSpecies.put(id,species);
+        id++;
         setChanged();
         notifyObservers(species);
     }
