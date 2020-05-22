@@ -42,19 +42,6 @@ public class ClienteDAO extends Observable{
     	return clients.get(id);
     }
     
-    // RetrieveById
-    // Os grupos devem implementar as modificacoes para permitir que um cliente seja
-    // encontrado a partir de um id (inteiro).
-    // Sugestao, ao inves de usar um List, usar um Map.
-    public Client getClienteById(int id){
-        for(Client cliente : clientes){
-            if(cliente.getId()==id){
-                return cliente;
-            }
-        }
-        return null;
-    }
-    
     // RetrieveByName
     public Client getClienteByName(String name)
     {
