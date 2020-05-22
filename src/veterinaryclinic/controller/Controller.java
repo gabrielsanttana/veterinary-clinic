@@ -1,8 +1,8 @@
-package veterinaryclinic.controller;
+package controller;
 
 import java.util.List;
 import java.util.Observer;
-import veterinaryclinic.model.*;
+import model.*;
 
 /**
  *

@@ -1,11 +1,13 @@
 package model;
 
 public class Veterinary {
+    private int id;
     private String veterinaryName;
     private String veterinaryAddress;
     private String veterinaryPhone;
 
-    public Veterinary(String veterinaryName, String veterinaryAddress, String veterinaryPhone) {
+    public Veterinary(int id, String veterinaryName, String veterinaryAddress, String veterinaryPhone) {
+        this.id = id;
         this.veterinaryName = veterinaryName;
         this.veterinaryAddress = veterinaryAddress;
         this.veterinaryPhone = veterinaryPhone;
@@ -33,5 +35,8 @@ public class Veterinary {
 
     public void setVeterinaryPhone(String veterinaryPhone) {
         this.veterinaryPhone = veterinaryPhone;
+    }
+    public int getId() {
+        return id;
     }
 }

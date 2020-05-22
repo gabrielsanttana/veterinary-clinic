@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package veterinaryclinic.view;
+package view;
 
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
 import java.util.List;
 
-import veterinaryclinic.model.*;
-import veterinaryclinic.controller.*;
+import model.*;
+import controller.*;
 
 /**
  *

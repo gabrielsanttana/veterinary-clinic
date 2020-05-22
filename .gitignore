@@ -24,5 +24,10 @@ local.properties
 # External tool builders
 .externalToolBuilders/
 
+# Locally stored "Visual Studio Code launch configurations"
+/.vscode/
+.vscode/**
+
 # Locally stored "Eclipse launch configurations"
 *.launch
+/bin/
