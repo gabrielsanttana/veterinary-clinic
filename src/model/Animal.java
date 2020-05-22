@@ -3,7 +3,7 @@ package model;
 public class Animal {
   private String animalName;
   private int animalAge;
-  private int animalSex;
+  private String animalSex;
   private Treatment[] treataments;
   private Species species;
 
@@ -12,11 +12,11 @@ public class Animal {
   
   
 
-  public Animal(String animalName, int animalAge, int animalSex, Treatment[] trataments, Species species) {
+  public Animal(String animalName, int animalAge, String animalSex, Treatment[] treataments, Species species) {
     this.animalName = animalName;
     this.animalAge = animalAge;
     this.animalSex = animalSex;
-    this.setTreataments(trataments);
+    this.treataments = treataments;
     this.species = species;
   }
 
@@ -36,11 +36,11 @@ public class Animal {
     this.animalAge = age;
   }
 
-  public int getAnimalSex() {
+  public String getAnimalSex() {
     return this.animalSex;
   }
 
-  public void setAnimalSex(int sex) {
+  public void setAnimalSex(String sex) {
     this.animalSex = sex;
   }
 
@@ -52,6 +52,22 @@ public class Animal {
     this.treataments = trataments;
   }
 
+  public Treatment[] getTreataments() {
+	  return treataments;
+  }
+  
+  public void setTreataments(Treatment[] treataments) {
+	  this.treataments = treataments;
+  }
+  
+  public Species getSpecies() {
+	  return species;
+  }
+  
+  public void setSpecies(Species species) {
+	  this.species = species;
+  }
+  
   public String viewAnimal() {
     return "";
   }
@@ -60,23 +76,5 @@ public class Animal {
     return "";
 
   }
-
-public Treatment[] getTreataments() {
-	return treataments;
-}
-
-public void setTreataments(Treatment[] treataments) {
-	this.treataments = treataments;
-}
-
-public Species getSpecies() {
-	return species;
-}
-
-public void setSpecies(Species species) {
-	this.species = species;
-}
-
-
 
 }

@@ -1,17 +1,13 @@
-package veterinaryclinic.view;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package view;
 
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Map;
 
-import veterinaryclinic.controller.*;
-import veterinaryclinic.model.*;
+import controller.*;
+import model.*;
 
 public class ClinicaVeterinaria implements Observer{
 
@@ -23,9 +19,9 @@ public class ClinicaVeterinaria implements Observer{
     
     public void listaClientes()
     {
-        Map<Integer, Client> clients = Controller.getAllClientes();
-        for (int i = 0; i < clients.size(); i++)
-        	System.out.println(clients.get(i));        
+    	ArrayList<Client> clients = Controller.getAllClientes();
+        for (Client c : clients)
+        	System.out.println(c);        
     }
     
     public void menuPrincipal()
@@ -50,7 +46,7 @@ public class ClinicaVeterinaria implements Observer{
                     break;
                 case 3:
                     System.out.println("Digite o ID do cliente: ");
-                    int clientId = sc.nextLine();
+                    int clientId = sc.nextInt();
 
                     System.out.println("Digite o nome do animal: ");
                     String animalName = sc.nextLine();
