@@ -1,4 +1,4 @@
-package veterinaryclinic.model;
+package model;
 
 import java.util.Date;
 
@@ -18,9 +18,7 @@ public class Consult {
 		this.historic = historic;
 		this.veterinary = veterinary;
 
-	}
-	
-	
+	}	
 
 	public int getId() {
 		return id;
