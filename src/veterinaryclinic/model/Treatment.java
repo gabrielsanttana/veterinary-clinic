@@ -12,11 +12,11 @@ public class Treatment {
 	
     
 	
-	public Treatment(Date startDate, Date endDate) {
+	public Treatment(int id,Date startDate, Date endDate) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
-		listConsult = new ArrayList();
+		this.listConsult = new ArrayList();
 	}
 	
 	public void addConsult(Consult consult) {

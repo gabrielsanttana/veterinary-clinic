@@ -1,19 +1,20 @@
 package veterinaryclinic.model;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 
 public class TreatmentDAO extends Observable {
 	
     private static TreatmentDAO instance;
-    private List<Treatment> treatments;
+    private Map<Integer,Treatment> treatments;
     private int id;
 	
     private TreatmentDAO(){
-        treatments = new ArrayList();
-        id = 0;
+        treatments = new HashMap<Integer,Treatment>();
+        this.id = 0;
     }
     
     public static TreatmentDAO getInstance(){
@@ -23,24 +24,17 @@ public class TreatmentDAO extends Observable {
          return instance;
      }
     
-    public void addTreatment(Date startDate, Date endDate){
-    	Treatment treatment = new Treatment(startDate, endDate);
-        id++;
-        treatments.add(treatment);
-        setChanged();
-        notifyObservers(treatment);       
+    public void addTreatment(int id,Date startDate, Date endDate){
+    	Treatment treatment = new Treatment(id,startDate, endDate);
+          
     }
-    public List getAllTreatment(){        
-        return treatments;
+    public Map getAllTreatment(){        
+        return  treatments;
     }
     
     public Treatment getTreatmentById(int id){
-        for(Treatment treatment : treatments){
-            if(treatment.getId()==id){
-                return treatment;
-            }
-        }
-        return null;
+    	return treatments.get(id);
+
     }
     
     
