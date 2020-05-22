@@ -1,20 +1,16 @@
-package model;
+package veterinaryclinic.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Observable;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- *
- * @author Plinio Vilela
- */
 public class ClienteDAO extends Observable{
     private static ClienteDAO instance;
-    private List<Cliente> clientes;
+    private Map<Integer, Client> clients;
     private int id;
     
     private ClienteDAO(){
-        clientes = new ArrayList();
+    	clients = new HashMap<Integer, Client>();
         id = 0;
     }
     
@@ -26,42 +22,42 @@ public class ClienteDAO extends Observable{
         return instance;
     }
     
-    
-// Partial CRUD    
     // Create
-    public void addCliente(String nome, String endereco, String telefone, String cep){
-        Cliente cliente = new Cliente(id,nome,endereco,telefone,cep);
+    public void addCliente(String nome, String endereco, String telefone, String cep, String email){
+        Client cliente = new Client(id,nome,endereco,telefone,cep, email);
+        clients.put(id, cliente);
         id++;
-        clientes.add(cliente);
         setChanged();
         notifyObservers(cliente);
     }
     
     // RetrieveAll
-    public List getAllClientes(){        
-        return clientes;
+    public Map<Integer, Client> getAllClientes(){        
+        return clients;
     }
     
     // RetrieveById
-    // Os grupos devem implementar as modificacoes para permitir que um cliente seja
-    // encontrado a partir de um id (inteiro).
-    // Sugestao, ao inves de usar um List, usar um Map.
-    public Cliente getClienteById(int id){
-        for(Cliente cliente : clientes){
-            if(cliente.getId()==id){
-                return cliente;
-            }
+    public Client getClienteById(int id)
+    {
+    	return clients.get(id);
+    }
+    
+    // RetrieveByName
+    public Client getClienteByName(String name)
+    {
+        for (int i = 0; i < clients.size(); i++)
+        {
+        	if (clients.get(id).getName() == name)
+        		return clients.get(id);
         }
         return null;
     }
     
-    // RetrieveByName
-    
-    // Updade
+    // Update
     
     // Delete   
-    public void deleteCliente(Cliente cliente){
-        clientes.remove(cliente);
+    public void deleteCliente(int id){
+    	clients.remove(id);
     }
     
 }
