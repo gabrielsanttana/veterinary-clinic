@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Observer;
 import model.*;
 
