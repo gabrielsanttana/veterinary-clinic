@@ -58,6 +58,7 @@ public class ClienteDAO extends Observable{
     // Delete   
     public void deleteCliente(int id){
     	clients.remove(id);
+    }
 
     
 }
