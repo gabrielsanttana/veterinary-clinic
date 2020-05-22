@@ -3,6 +3,7 @@ package veterinaryclinic.model;
 import java.util.Date;
 
 public class Consult {
+	private int id;
 	private Date consultDate;
 	private String historic;
 	private Veterinary veterinary;
@@ -11,11 +12,22 @@ public class Consult {
 	public Consult() {
 	}
 
-	public Consult(Date consultDate, String historic, Veterinary veterinary, Exam exam) {
+	public Consult(int id,Date consultDate, String historic, Veterinary veterinary, Exam exam) {
+		this.id = id;
 		this.consultDate = consultDate;
 		this.historic = historic;
 		this.veterinary = veterinary;
 
+	}
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getHistoric() {

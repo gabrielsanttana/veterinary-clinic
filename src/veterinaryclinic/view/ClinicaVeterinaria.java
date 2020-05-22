@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package veterinaryclinic.view;
 
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
-import controller.Controller;
 import java.util.List;
-import model.ClienteDAO;
+
+import veterinaryclinic.model.*;
+import veterinaryclinic.controller.*;
 
 /**
  *
@@ -25,28 +26,31 @@ public class ClinicaVeterinaria implements Observer{
     }
     
     public void listaClientes(){
-        List clientes = Controller.getAllClientes();
+        List<Client> clientes = Controller.getAllClientes();
         for (Object cliente : clientes){
             System.out.println(cliente);
         }
     }
     
-    public void menuPrincipal(){
-        Scanner in = new Scanner(System.in);
+    public void menuPrincipal()
+    {
+        Scanner sc = new Scanner(System.in);
         Controller.setObserver(this);
-        while (true){
+        while (true)
+        {
             System.out.println("1- Insere Cliente");
             System.out.println("2- Lista Clientes");
             System.out.println("3- Encerra");
-            int opcao = in.nextInt();
+            int opcao = sc.nextInt();
             switch (opcao){
                 case 1:
-                    Controller.addCliente("Plinio Vilela", "endereco", "(19)98787-9988", "15675-900");
+                    Controller.addCliente("Plinio Vilela", "endereco", "(19)98787-9988", "15675-900", "teste@email.com");
                     break;
                 case 2:
                     listaClientes();
                     break;
                 case 3:
+                	sc.close();
                     return;
             }
         }
