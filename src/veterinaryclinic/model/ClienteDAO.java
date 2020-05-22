@@ -10,11 +10,11 @@ import java.util.Observable;
  */
 public class ClienteDAO extends Observable{
     private static ClienteDAO instance;
-    private List<Cliente> clientes;
+    private List<Client> clientes;
     private int id;
     
     private ClienteDAO(){
-        clientes = new ArrayList();
+        clientes = new ArrayList<Client>();
         id = 0;
     }
     
@@ -29,8 +29,8 @@ public class ClienteDAO extends Observable{
     
 // Partial CRUD    
     // Create
-    public void addCliente(String nome, String endereco, String telefone, String cep){
-        Cliente cliente = new Cliente(id,nome,endereco,telefone,cep);
+    public void addCliente(String nome, String endereco, String telefone, String cep, String email){
+        Client cliente = new Client(id,nome,endereco,telefone,cep, email);
         id++;
         clientes.add(cliente);
         setChanged();
@@ -38,7 +38,7 @@ public class ClienteDAO extends Observable{
     }
     
     // RetrieveAll
-    public List getAllClientes(){        
+    public List<Client> getAllClientes(){        
         return clientes;
     }
     
@@ -46,8 +46,8 @@ public class ClienteDAO extends Observable{
     // Os grupos devem implementar as modificacoes para permitir que um cliente seja
     // encontrado a partir de um id (inteiro).
     // Sugestao, ao inves de usar um List, usar um Map.
-    public Cliente getClienteById(int id){
-        for(Cliente cliente : clientes){
+    public Client getClienteById(int id){
+        for(Client cliente : clientes){
             if(cliente.getId()==id){
                 return cliente;
             }
@@ -60,8 +60,8 @@ public class ClienteDAO extends Observable{
     // Updade
     
     // Delete   
-    public void deleteCliente(Cliente cliente){
-        clientes.remove(cliente);
+    public void deleteCliente(Client client){
+        clientes.remove(client);
     }
     
 }
