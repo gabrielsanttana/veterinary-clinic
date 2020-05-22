@@ -1,15 +1,21 @@
-package veterinaryclinic.model;
+package model;
 
 import java.util.Date;
 
 public class Treatment {
 	private Date startDate;
 	private Date endDate;
+	private Consult[] consult;
 	
-	private Treatment(Date startDate, Date endDate) {
+	public Treatment() {
+		
+	}
+	
+	public Treatment(Date startDate, Date endDate, Consult[] consult) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.consult = consult;
 	}
 	
 	public Date getDatStart() {
@@ -36,6 +42,14 @@ public class Treatment {
     return "";
   }
   
+	public Consult[] getConsult() {
+		return consult;
+	}
+
+	public void setConsult(Consult[] consult) {
+		this.consult = consult;
+	}
+
 	public int registerTreatment() {
     return 0;
   }

@@ -1,19 +1,19 @@
-package veterinaryclinic.model;
+package model;
 
 public class Client {
 
+	private int id;
 	private String name;
 	private String address;
 	private String tel;
-	private double cep;
+	private String cep;
 	private String email;
 	private Animal[] animals;
 
-	public Client() {
+	public Client() {}
 
-	}
-
-	public Client(String name, String address, String tel, double cep, String email, Animal[] animals) {
+	public Client(int id, String name, String address, String tel, String cep, String email) {
+		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.tel = tel;
@@ -53,11 +53,11 @@ public class Client {
 		this.tel = tel;
 	}
 
-	public double getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(double cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
@@ -75,6 +75,14 @@ public class Client {
 
 	public void setAnimals(Animal[] animals) {
 		this.animals = animals;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
