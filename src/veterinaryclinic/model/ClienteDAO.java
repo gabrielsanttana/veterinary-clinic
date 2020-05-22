@@ -1,4 +1,4 @@
-package veterinaryclinic.model;
+package model;
 
 import java.util.Observable;
 import java.util.HashMap;

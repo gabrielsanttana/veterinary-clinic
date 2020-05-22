@@ -1,8 +1,8 @@
-package veterinaryclinic.controller;
+package controller;
 
 import java.util.Map;
 import java.util.Observer;
-import veterinaryclinic.model.*;
+import model.*;
 
 public class Controller {
     public static void setObserver(Observer observer){
