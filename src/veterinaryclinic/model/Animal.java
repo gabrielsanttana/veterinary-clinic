@@ -5,15 +5,19 @@ public class Animal {
   private int animalAge;
   private int animalSex;
   private Treatment[] treataments;
+  private Species species;
 
   public Animal() {
   }
+  
+  
 
-  public Animal(String animalName, int animalAge, int animalSex, Treatment[] trataments) {
+  public Animal(String animalName, int animalAge, int animalSex, Treatment[] trataments, Species species) {
     this.animalName = animalName;
     this.animalAge = animalAge;
     this.animalSex = animalSex;
     this.setTreataments(trataments);
+    this.species = species;
   }
 
   public String getAnimalName() {
@@ -64,4 +68,15 @@ public Treatment[] getTreataments() {
 public void setTreataments(Treatment[] treataments) {
 	this.treataments = treataments;
 }
+
+public Species getSpecies() {
+	return species;
+}
+
+public void setSpecies(Species species) {
+	this.species = species;
+}
+
+
+
 }
