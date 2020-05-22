@@ -1,16 +1,16 @@
 package model;
 
 import java.util.Observable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class AnimalDAO extends Observable {
   private static AnimalDAO instance;
-  private List<Animal> animals;
-  private int id;
+  private Map<Integer, Animal> animals;
+  private Integer id;
 
   private AnimalDAO() {
-    animals = new ArrayList<Animal>();
+    animals = new HashMap<Integer, Animal>();
     this.id = 0;
   }
 
@@ -30,7 +30,7 @@ public class AnimalDAO extends Observable {
     notifyObservers(animal);
   }
 
-  public List<Animal> getAllAnimals() {
+  public Map<Animal> getAllAnimals() {
     return animals;
   }
 
