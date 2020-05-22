@@ -11,7 +11,7 @@ public class AnimalDAO extends Observable {
 
   private AnimalDAO() {
     animals = new ArrayList<Animal>();
-    id = 0;
+    this.id = 0;
   }
 
   public static AnimalDAO getInstance() {
@@ -24,7 +24,7 @@ public class AnimalDAO extends Observable {
 
   public void addAnimal(String nome, int age, String sex, Treatment[] treatments, Species[] species) {
     Animal animal = new Animal(nome, age, sex, treatments, species);
-    id++;
+    this.id++;
     animals.add(animal);
     setChanged();
     notifyObservers(animal);
