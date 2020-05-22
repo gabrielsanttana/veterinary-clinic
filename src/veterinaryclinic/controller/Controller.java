@@ -16,4 +16,8 @@ public class Controller {
     public static Map<Integer, Client> getAllClientes(){
         return ClienteDAO.getInstance().getAllClientes();
     }
+
+    public static void addAnimal(String name, int age, String sex, Treatment[] treatments, Species[] species) {
+        AnimalDAO.getInstace().addAnimal(name, age, sex, treatments, species);
+    } 
 }
