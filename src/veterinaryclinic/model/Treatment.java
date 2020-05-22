@@ -1,17 +1,28 @@
 package veterinaryclinic.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Treatment {
 	private Date startDate;
 	private Date endDate;
+	private List<Consult> listConsult; 
 	
-	private Treatment(Date startDate, Date endDate) {
+    
+	
+	public Treatment(Date startDate, Date endDate, List<Consult> listConsult) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
+		listConsult = new ArrayList();
 	}
 	
+	public void addConsult(Consult consult) {
+		listConsult.add(consult);
+		
+	}
+
 	public Date getDatStart() {
 		return startDate;
   }
