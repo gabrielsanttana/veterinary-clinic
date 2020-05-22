@@ -1,23 +1,29 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Treatment {
 	private Date startDate;
 	private Date endDate;
-	private Consult[] consult;
+	private List<Consult> listConsult; 
+	private int id;
 	
-	public Treatment() {
-		
-	}
+    
 	
-	public Treatment(Date startDate, Date endDate, Consult[] consult) {
+	public Treatment(int id,Date startDate, Date endDate) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.consult = consult;
+		this.listConsult = new ArrayList();
 	}
 	
+	public void addConsult(Consult consult) {
+		listConsult.add(consult);
+		
+	}
+
 	public Date getDatStart() {
 		return startDate;
   }
@@ -42,15 +48,26 @@ public class Treatment {
     return "";
   }
   
-	public Consult[] getConsult() {
-		return consult;
+	public List<Consult> getListConsult() {
+		return listConsult;
 	}
 
-	public void setConsult(Consult[] consult) {
-		this.consult = consult;
+	public void setConsult(List<Consult> listConsult) {
+		this.listConsult = listConsult;
 	}
 
 	public int registerTreatment() {
     return 0;
   }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
+	
 }
