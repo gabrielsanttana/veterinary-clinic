@@ -1,11 +1,10 @@
-package veterinaryclinic.controller;
+package veterinaryclinic.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
-import veterinaryclinic.model.Species;
 
 public class SpeciesDAO extends Observable{
 	
