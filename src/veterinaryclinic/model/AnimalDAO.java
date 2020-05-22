@@ -25,7 +25,7 @@ public class AnimalDAO extends Observable {
   public void addAnimal(String nome, int age, String sex, Treatment[] treatments, Species[] species) {
     Animal animal = new Animal(nome, age, sex, treatments, species);
     this.id++;
-    animals.add(animal);
+    animals.put(id, animal);
     setChanged();
     notifyObservers(animal);
   }
@@ -35,14 +35,10 @@ public class AnimalDAO extends Observable {
   }
 
   public Animal getAnimalById(int id) {
-    for(Animal animal : animals) {
-      if(animal.getId() == id) {
-        return animal;
-      }
-    }
+    return animals.get(id);
   }
 
   public void deleteAnimal(Animal animal) {
-    animals.remove(animal);
+    animals.remove(animal.getId());
   }
 }
