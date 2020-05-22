@@ -1,4 +1,4 @@
-package veterinaryclinic.model;
+package model;
 
 public class Veterinary {
     private String veterinaryName;

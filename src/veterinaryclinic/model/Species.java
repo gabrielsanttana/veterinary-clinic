@@ -1,13 +1,15 @@
-package veterinaryclinic.model;
+package model;
 
 public class Species {
     private String speciesName;
+    private int id;
 
     public Species() {
 
     }
 
-    public Species(String speciesName) {
+    public Species(int id,String speciesName) {
+    	this.id = id;
         this.speciesName = speciesName;
     }
 
@@ -18,5 +20,15 @@ public class Species {
     public void setspeciesName(String speciesName) {
         this.speciesName = speciesName;
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+    
+    
 
 }

@@ -1,4 +1,4 @@
-package veterinaryclinic.model;
+package model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,6 +48,14 @@ public class Treatment {
     return "";
   }
   
+	public List<Consult> getListConsult() {
+		return listConsult;
+	}
+
+	public void setConsult(List<Consult> listConsult) {
+		this.listConsult = listConsult;
+	}
+
 	public int registerTreatment() {
     return 0;
   }
