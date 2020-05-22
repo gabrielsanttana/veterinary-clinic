@@ -22,8 +22,8 @@ public class AnimalDAO extends Observable {
     return instance;
   }
 
-  public void addAnimal(String nome, int age, String sex, Treatment[] treatments, Species[] species) {
-    Animal animal = new Animal(nome, age, sex, treatments, species);
+  public void addAnimal(String name, int age, String sex, Treatment[] treatments, Species[] species) {
+    Animal animal = new Animal(name, age, sex, treatments, species);
     animals.put(id, animal);
     this.id++;
     setChanged();
