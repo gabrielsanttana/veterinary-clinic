@@ -1,13 +1,9 @@
 package controller;
 
-import java.util.List;
+import java.util.Map;
 import java.util.Observer;
 import model.*;
 
-/**
- *
- * @author Plinio Vilela
- */
 public class Controller {
     public static void setObserver(Observer observer){
         ClienteDAO.getInstance().addObserver(observer);
@@ -17,7 +13,7 @@ public class Controller {
         ClienteDAO.getInstance().addCliente(nome, endereco, telefone, cep, email);
     }
     
-    public static List<Client> getAllClientes(){
+    public static Map<Integer, Client> getAllClientes(){
         return ClienteDAO.getInstance().getAllClientes();
     }
 }
