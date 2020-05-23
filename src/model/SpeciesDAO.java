@@ -1,14 +1,11 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
 public class SpeciesDAO extends Observable{
 	
-
     private static SpeciesDAO instance;
     private Map<Integer,Species> listSpecies;
     private Integer id;
@@ -39,7 +36,7 @@ public class SpeciesDAO extends Observable{
     }
     
     // RetrieveAll
-    public Map getAllSpecies(){        
+    public Map<Integer,Species> getAllSpecies(){        
         return listSpecies;
     }
     

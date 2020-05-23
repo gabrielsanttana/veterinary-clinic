@@ -8,15 +8,13 @@ public class Treatment {
 	private Date startDate;
 	private Date endDate;
 	private List<Consult> listConsult; 
-	private int id;
-	
-    
+	private int id;    
 	
 	public Treatment(int id,Date startDate, Date endDate) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.listConsult = new ArrayList();
+		this.listConsult = new ArrayList<Consult>();
 	}
 	
 	public void addConsult(Consult consult) {
@@ -26,27 +24,19 @@ public class Treatment {
 
 	public Date getDatStart() {
 		return startDate;
-  }
+	}
   
 	public void setDatStart(Date startDate) {
 		this.startDate = startDate;
-  }
+	}
   
 	public Date getendDate() {
 		return endDate;
-  }
+	}
   
 	public void setendDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
-  public String listAppointment() {
-    return "";
-  }
-  
-  public String appointmentTreatment() {
-    return "";
-  }
   
 	public List<Consult> getListConsult() {
 		return listConsult;
@@ -57,8 +47,8 @@ public class Treatment {
 	}
 
 	public int registerTreatment() {
-    return 0;
-  }
+		return 0;
+	}
 
 	public int getId() {
 		return id;
@@ -67,7 +57,13 @@ public class Treatment {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	
+	public String listAppointment() {
+		return "";
+	}
+  
+	public String appointmentTreatment() {
+		return "";
+	}
 	
 }

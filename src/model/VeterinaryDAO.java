@@ -29,7 +29,7 @@ public class VeterinaryDAO extends Observable {
         notifyObservers(veterinary);
     }
 
-    public Map getAllVeterinaries(){
+    public Map<Integer,Veterinary> getAllVeterinaries(){
         return listVeterinaries;
     }
 

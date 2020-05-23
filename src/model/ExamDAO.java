@@ -3,7 +3,6 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
-import java.util.ArrayList;
 
 public class ExamDAO extends Observable{
 	
@@ -38,7 +37,7 @@ public class ExamDAO extends Observable{
     }
     
     // RetrieveAll
-    public Map getAllExam(){        
+    public Map<Integer,Exam> getAllExam(){        
         return listExam;
     }
     

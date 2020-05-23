@@ -7,11 +7,11 @@ import java.util.Map;
 public class ClienteDAO extends Observable{
     private static ClienteDAO instance;
     private Map<Integer, Client> clients;
-    private int id;
+    private Integer id;
     
     private ClienteDAO(){
     	clients = new HashMap<Integer, Client>();
-      id = 0;
+    	id = 0;
     }
     
     // Singleton
@@ -45,12 +45,10 @@ public class ClienteDAO extends Observable{
     // RetrieveByName
     public Client getClienteByName(String name)
     {
-        for (int i = 0; i < clients.size(); i++)
-        {
-        	if (clients.get(id).getName() == name)
-        		return clients.get(id);
-        }
-        return null;
+    	for (Client c : clients.values())
+    		if(c.getName() == name)
+    			return c;
+		return null;
     }
     
     // Update
@@ -59,6 +57,5 @@ public class ClienteDAO extends Observable{
     public void deleteCliente(int id){
     	clients.remove(id);
     }
-
     
 }
