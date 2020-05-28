@@ -16,7 +16,7 @@ public class Treatment {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.listConsult = new ArrayList();
+		this.listConsult = new ArrayList<Consult>();
 	}
 	
 	public void addConsult(Consult consult) {
