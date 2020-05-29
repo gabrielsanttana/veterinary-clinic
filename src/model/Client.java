@@ -5,18 +5,18 @@ public class Client {
 	private int id;
 	private String name;
 	private String address;
-	private String tel;
+	private String phone;
 	private String cep;
 	private String email;
 	private Animal[] animals;
 
 	public Client() {}
 
-	public Client(int id, String name, String address, String tel, String cep, String email) {
+	public Client(int id, String name, String address, String phone, String cep, String email) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
-		this.tel = tel;
+		this.phone = phone;
 		this.cep = cep;
 		this.email = email;
 	}
@@ -45,12 +45,12 @@ public class Client {
 		this.address = address;
 	}
 
-	public String getTel() {
-		return tel;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getCep() {

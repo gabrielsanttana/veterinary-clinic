@@ -1,9 +1,11 @@
 package model;
 
 public class Animal {
+  private int id;
   private String animalName;
   private int animalAge;
   private String animalSex;
+  private int clientId;
   private Treatment[] treataments;
   private Species species;
 
@@ -11,13 +13,39 @@ public class Animal {
   }
   
   
+  public Animal(int id, String animalName, int animalAge, String animalSex, int clientId, Treatment[] treataments, Species species) {
+    this.id = id;
+    this.animalName = animalName;
+    this.animalAge = animalAge;
+    this.animalSex = animalSex;
+    this.clientId = clientId;
+    this.treataments = treataments;
+    this.species = species;
+  }
 
-  public Animal(String animalName, int animalAge, String animalSex, Treatment[] treataments, Species species) {
+  public Animal(int id, String animalName, int animalAge, String animalSex, Treatment[] treataments, Species species) {
+	this.id = id;
     this.animalName = animalName;
     this.animalAge = animalAge;
     this.animalSex = animalSex;
     this.treataments = treataments;
     this.species = species;
+  }
+	
+  public int getClientId() {
+    return this.clientId;
+  }
+
+  public void setClientId(int clientId) {
+    this.clientId = clientId;
+  }
+
+  public int getId() {
+    return this.id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getAnimalName() {

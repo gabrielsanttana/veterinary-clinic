@@ -57,7 +57,7 @@ public class ClinicaVeterinaria implements Observer{
                     System.out.println("Digite o sexo do animal: ");
                     String animalSex = sc.nextLine();
 
-                    Controller.addAnimal(clientId, animalName, animalAge, animalSex, null, null);
+//                    Controller.addAnimal(clientId, animalName, animalAge, animalSex, null, null);
                     break;
                 case 4: 
                     break;
