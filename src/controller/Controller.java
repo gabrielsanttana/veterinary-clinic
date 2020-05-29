@@ -1,19 +1,28 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.Observer;
+import java.util.List;
 import model.*;
 
 public class Controller {
-    public static void addCliente(String nome, String endereco, String telefone, String cep, String email){
-        ClientDAO.getInstance().addClient(nome, endereco, telefone, cep, email);
+    
+    public static void addCliente(String name, String address, String email, String phone, String cep){
+        ClientDAO.getInstance().addClient(name, address, phone, cep, email);
     }
     
-    public static ArrayList<Client> getAllClientes(){
-        return new ArrayList<Client>(ClientDAO.getInstance().getAllClients().values());
+    public static List getAllClientes(){
+        return ClientDAO.getInstance().getAllClients();
     }
-
-    public static void addAnimal(String name, int age, String sex, Treatment[] treatments, Species species) {
-        AnimalDAO.getInstance().addAnimal(name, age, sex, treatments, species);
-    } 
+    
+    public static Client getClienteById(int id){
+        return ClientDAO.getInstance().getClientById(id);
+    }
+    
+    public static void deleteCliente(Client cliente){
+        ClientDAO.getInstance().deleteClient(cliente);
+    }
+    
+    public static void addAnimal(String animalName, int animalAge, String animalSex, int clientId){
+        AnimalDAO.getInstance().addAnimal(animalName, animalAge, animalSex, clientId);
+    }
+    
 }
