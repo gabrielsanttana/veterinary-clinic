@@ -1,6 +1,7 @@
 package model;
 
 public class Animal {
+  private int id;
   private String animalName;
   private int animalAge;
   private String animalSex;
@@ -12,12 +13,21 @@ public class Animal {
   
   
 
-  public Animal(String animalName, int animalAge, String animalSex, Treatment[] treataments, Species species) {
+  public Animal(int id, String animalName, int animalAge, String animalSex, Treatment[] treataments, Species species) {
+	this.id = id;
     this.animalName = animalName;
     this.animalAge = animalAge;
     this.animalSex = animalSex;
     this.treataments = treataments;
     this.species = species;
+  }
+
+  public int getId() {
+    return this.id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getAnimalName() {

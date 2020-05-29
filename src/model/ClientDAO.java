@@ -27,13 +27,32 @@ public class ClientDAO extends DAO {
         }
         return instance;
     }
+    
+    public boolean createTable() {
+    	try {
+            PreparedStatement stmt;
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS client( \n" + 
+            		"                        id INTEGER PRIMARY KEY, \n" + 
+            		"                        name  VARCHAR,\n" + 
+            		"                        address VARCHAR, \n" + 
+            		"                        phone VARCHAR, \n" + 
+            		"                        cep VARCHAR)");
+            executeUpdate(stmt);
+            
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    	
+    	return false;
+    }
 
 // Partial CRUD    
     // Create
     public void addClient(String name, String address, String email, String phone, String cep) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO client (nome,endereco,cep,email,telefone) VALUES (?,?,?,?,?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO client (name,address,cep,email,phone) VALUES (?,?,?,?,?)");
             stmt.setString(2, name);
             stmt.setString(3, address);
             stmt.setString(4, cep);
