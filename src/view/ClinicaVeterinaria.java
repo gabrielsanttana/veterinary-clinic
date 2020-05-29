@@ -3,8 +3,7 @@ package view;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 import controller.*;
 import model.*;
@@ -19,7 +18,7 @@ public class ClinicaVeterinaria implements Observer{
     
     public void listaClientes()
     {
-    	ArrayList<Client> clients = Controller.getAllClientes();
+    	List<Client> clients = Controller.getAllClientes();
         for (Client c : clients)
         	System.out.println(c);        
     }
@@ -27,7 +26,7 @@ public class ClinicaVeterinaria implements Observer{
     public void menuPrincipal()
     {
         Scanner sc = new Scanner(System.in);
-        Controller.setObserver(this);
+        //Controller.setObserver(this);
         while (true)
         {
             System.out.println("1- Inserir cliente");
