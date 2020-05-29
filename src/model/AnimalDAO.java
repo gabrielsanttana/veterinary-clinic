@@ -14,6 +14,7 @@ public class AnimalDAO extends DAO {
 
     private AnimalDAO() {
         DAO.getConnection();
+        createTable();
     }
 
     // Singleton
@@ -45,13 +46,14 @@ public class AnimalDAO extends DAO {
 
 // Partial CRUD    
     // Create
-    public void addAnimal(String animalName, int animalAge, String animalSex) {
+    public void addAnimal(String animalName, int animalAge, String animalSex, int clientId) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (animalName,animalAge,animalSex) VALUES (?,?,?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (animalName,animalAge,animalSex,clientId) VALUES (?,?,?,?)");
             stmt.setString(2, animalName);
             stmt.setInt(3, animalAge);
             stmt.setString(4, animalSex);
+            stmt.setInt(5, clientId);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,7 +66,7 @@ public class AnimalDAO extends DAO {
     	Species species = new Species();
         try {
             // int id, String nome, String endereco, String telefone, String cep
-        	animal = new Animal(rs.getInt("id"), rs.getString("animalName"), rs.getInt("animalAge"), rs.getString("animalSex"), treataments, species);
+        	animal = new Animal(rs.getInt("id"), rs.getString("animalName"), rs.getInt("animalAge"), rs.getString("animalSex"), rs.getInt("clientId"), treataments, species);
         } catch (SQLException e) {
             e.printStackTrace();
         }
