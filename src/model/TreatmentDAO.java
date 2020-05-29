@@ -2,7 +2,6 @@ package model;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
@@ -10,7 +9,7 @@ public class TreatmentDAO extends Observable {
 	
     private static TreatmentDAO instance;
     private Map<Integer,Treatment> treatments;
-    private int id;
+    private Integer id;
 	
     private TreatmentDAO(){
         treatments = new HashMap<Integer,Treatment>();
@@ -24,22 +23,24 @@ public class TreatmentDAO extends Observable {
          return instance;
      }
     
-    public void addTreatment(int id,Date startDate, Date endDate){
-    	Treatment treatment = new Treatment(id,startDate, endDate);
+    public void addTreatment(Date startDate, Date endDate){
+    	Treatment treatment = new Treatment(id, startDate, endDate);
+    	treatments.put(id, treatment);
+        this.id++;
+        setChanged();
+        notifyObservers(treatment);
           
     }
-    public Map getAllTreatment(){        
+    public Map<Integer, Treatment> getAllTreatment(){        
         return  treatments;
     }
     
     public Treatment getTreatmentById(int id){
     	return treatments.get(id);
-
-    }
-    
+    }    
     
     public void deleteTreatment(Treatment treatment){
-        treatments.remove(treatment);
+        treatments.remove(treatment.getId());
     }
     
     

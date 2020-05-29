@@ -76,8 +76,8 @@ public class ClientDAO extends DAO {
     }
 
     // RetrieveAll
-    public List getAllClients() {
-        List<Client> clients = new ArrayList();
+    public List<Client> getAllClients() {
+        List<Client> clients = new ArrayList<Client>();
         ResultSet rs = getResultSet("SELECT * FROM client");
         try {
             while (rs.next()) {

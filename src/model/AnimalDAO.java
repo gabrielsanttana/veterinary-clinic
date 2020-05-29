@@ -74,8 +74,8 @@ public class AnimalDAO extends DAO {
     }
 
     // RetrieveAll
-    public List getAllAnimals() {
-        List<Animal> animals = new ArrayList();
+    public List<Animal> getAllAnimals() {
+        List<Animal> animals = new ArrayList<Animal>();
         ResultSet rs = getResultSet("SELECT * FROM animal");
         try {
             while (rs.next()) {
@@ -106,7 +106,7 @@ public class AnimalDAO extends DAO {
     }
     
     public List<Animal> getAnimalByClient(int clientId) {
-    	List<Animal> animals = new ArrayList();
+    	List<Animal> animals = new ArrayList<Animal>();
         ResultSet rs = getResultSet("SELECT * FROM animal WHERE clientId = " + clientId);
         try {
             while (rs.next()) {

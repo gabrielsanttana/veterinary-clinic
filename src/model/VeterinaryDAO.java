@@ -21,7 +21,7 @@ public class VeterinaryDAO extends Observable {
         return instance;
     }
 
-    public void addVeterinay(int id, String veterinaryName, String veterinaryAddress,String veterinaryPhone){
+    public void addVeterinay(String veterinaryName, String veterinaryAddress,String veterinaryPhone){
         Veterinary veterinary = new Veterinary(id, veterinaryName, veterinaryAddress, veterinaryPhone);
         listVeterinaries.put(id, veterinary);
         this.id++;
@@ -29,7 +29,7 @@ public class VeterinaryDAO extends Observable {
         notifyObservers(veterinary);
     }
 
-    public Map getAllVeterinaries(){
+    public Map<Integer,Veterinary> getAllVeterinaries(){
         return listVeterinaries;
     }
 

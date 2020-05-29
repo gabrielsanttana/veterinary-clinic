@@ -3,10 +3,8 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
-import java.util.ArrayList;
 
-public class ExamDAO extends Observable{
-	
+public class ExamDAO extends Observable{	
 
     private static ExamDAO instance;
     private Map<Integer,Exam> listExam;
@@ -23,22 +21,20 @@ public class ExamDAO extends Observable{
             instance = new ExamDAO();
         }
         return instance;
-    }
-
-    
+    }    
     
     // Partial CRUD    
     // Create
     public void addExam(String exam_desc){
-    	Exam exam = new Exam(id,exam_desc);
-        listExam.put(id,exam);
-        id++;
+    	Exam exam = new Exam(id, exam_desc);
+        listExam.put(id, exam);
+        this.id++;
         setChanged();
         notifyObservers(exam);
     }
     
     // RetrieveAll
-    public Map getAllExam(){        
+    public Map<Integer,Exam> getAllExam(){        
         return listExam;
     }
     

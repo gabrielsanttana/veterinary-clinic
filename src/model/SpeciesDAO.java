@@ -1,8 +1,6 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
@@ -33,13 +31,13 @@ public class SpeciesDAO extends Observable{
     public void addSpecies(String speciesName){
     	Species species = new Species(id,speciesName);
         listSpecies.put(id,species);
-        id++;
+        this.id++;
         setChanged();
         notifyObservers(species);
     }
     
     // RetrieveAll
-    public Map getAllSpecies(){        
+    public Map<Integer,Species> getAllSpecies(){        
         return listSpecies;
     }
     

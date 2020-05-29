@@ -9,7 +9,7 @@ public class Controller {
         ClientDAO.getInstance().addClient(name, address, phone, cep, email);
     }
     
-    public static List getAllClientes(){
+    public static List<Client> getAllClientes(){
         return ClientDAO.getInstance().getAllClients();
     }
     

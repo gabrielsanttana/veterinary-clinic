@@ -29,7 +29,7 @@ public class ConsultDAO extends Observable{
     
     // Partial CRUD    
     // Create
-    public void addConsult(int id,Date consultDate, String historic, Veterinary veterinary, Exam exam){
+    public void addConsult(Date consultDate, String historic, Veterinary veterinary, Exam exam){
     	Consult consult = new Consult(id,consultDate,historic,veterinary,exam);
     	listConsult.put(id,consult);
         id++;
@@ -38,7 +38,7 @@ public class ConsultDAO extends Observable{
     }
     
     // RetrieveAll
-    public Map getAllConsult(){        
+    public Map<Integer,Consult> getAllConsult(){        
         return listConsult;
     }
     
