@@ -8,7 +8,7 @@ import java.util.List;
 import controller.*;
 import model.*;
 
-public class ClinicaVeterinaria implements Observer{
+public class ClinicaVeterinaria implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
