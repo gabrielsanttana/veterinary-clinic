@@ -31,8 +31,7 @@ public abstract class DAO {
         ResultSet rs = null;
         try {
             s = (Statement) con.createStatement();
-            s.executeQuery(query);
-            rs = s.getResultSet();
+            rs = s.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,8 +1,11 @@
 package model;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -45,10 +48,11 @@ public class VeterinaryDAO extends DAO {
     public void addVeterinary(String name, String address, String phone) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO veterinary (name,address,phone) VALUES (?,?,?)");
-            stmt.setString(2, name);
-            stmt.setString(3, address);
-            stmt.setString(6, phone);
+            Connection con = DAO.getConnection();
+            stmt = con.prepareStatement("INSERT INTO veterinary (name,address,phone) VALUES (?,?,?);");
+            stmt.setString(1, name);
+            stmt.setString(2, address);
+            stmt.setString(3, phone);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(VeterinaryDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,7 +73,7 @@ public class VeterinaryDAO extends DAO {
     // RetrieveAll
     public List<Veterinary> getAllVeterinary() {
         List<Veterinary> veterinaries = new ArrayList<Veterinary>();
-        ResultSet rs = getResultSet("SELECT * FROM veterinary");
+        ResultSet rs = getResultSet("SELECT * FROM veterinary;");
         try {
             while (rs.next()) {
                 veterinaries.add(buildObject(rs));
@@ -81,9 +85,6 @@ public class VeterinaryDAO extends DAO {
     }
 
     // RetrieveById
-    // Os grupos devem implementar as modificacoes para permitir que um cliente seja
-    // encontrado a partir de um id (inteiro).
-    // Sugestao, ao inves de usar um List, usar um Map.
     public Veterinary getVeterinaryById(int id) {
         Veterinary veterinary = null;
         ResultSet rs = getResultSet("SELECT * FROM veterinary WHERE id = " + id);

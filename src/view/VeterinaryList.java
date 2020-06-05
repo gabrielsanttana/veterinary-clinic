@@ -18,6 +18,10 @@ import model.Veterinary;
 
 public class VeterinaryList extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
 	private VeterinaryTableModel model;
@@ -27,7 +31,7 @@ public class VeterinaryList extends JFrame {
 	 * Create the frame.
 	 */
 	public VeterinaryList() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -35,13 +39,14 @@ public class VeterinaryList extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		listVeterinary = Controller.getAllVeterinary();
-		model = new VeterinaryTableModel(listVeterinary);
 		table = new JTable();
-		table.setModel(model);
 		table.setToolTipText("");
 		table.setBounds(10, 51, 414, 199);
 		contentPane.add(table);
+		listVeterinary = Controller.getAllVeterinary();
+		model = new VeterinaryTableModel(listVeterinary);
+		table.setModel(model);
+
 		
 		JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("Lista de Veterinarios");
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
