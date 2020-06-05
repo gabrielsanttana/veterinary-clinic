@@ -33,12 +33,13 @@ public class ClinicaVeterinaria implements Observer{
             System.out.println("2- Listar clientes");
             System.out.println("3 - Inserir animal");
             System.out.println("4 - Listar animais");
+            System.out.println("5 - Exibir Lista de Veterinarios");
             System.out.println("0 - Encerrar");
             
             int opcao = sc.nextInt();
             switch (opcao){
                 case 1:
-                    Controller.addCliente("Plinio Vilela", "endereco", "(19)98787-9988", "15675-900", "teste@email.com");
+                    Controller.addVeterinary("Plinio Vilela", "endereco", "(19)98787-9988");
                     break;
                 case 2:
                     listaClientes();
@@ -60,6 +61,15 @@ public class ClinicaVeterinaria implements Observer{
                     break;
                 case 4: 
                     break;
+                    
+                case 5:
+    				try {
+    					VeterinaryList frame = new VeterinaryList();
+    					frame.setVisible(true);
+    				} catch (Exception e) {
+    					e.printStackTrace();
+    				}
+                	break;
                 case 0:
                 	sc.close();
                     return;

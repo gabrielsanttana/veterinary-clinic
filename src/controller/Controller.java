@@ -20,9 +20,16 @@ public class Controller {
     public static void deleteCliente(Client cliente){
         ClientDAO.getInstance().deleteClient(cliente);
     }
+    public static List<Veterinary> getAllVeterinary(){
+        return VeterinaryDAO.getInstance().getAllVeterinary();
+    }
     
     public static void addAnimal(String animalName, int animalAge, String animalSex, int clientId){
         AnimalDAO.getInstance().addAnimal(animalName, animalAge, animalSex, clientId);
+    }    
+    
+    public static void addVeterinary(String veterinaryName, String veterinaryAddress, String veterinaryPhone){
+        VeterinaryDAO.getInstance().addVeterinary(veterinaryName, veterinaryAddress, veterinaryPhone);
     }
     
 }

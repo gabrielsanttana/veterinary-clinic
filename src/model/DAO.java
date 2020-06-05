@@ -11,7 +11,8 @@ public abstract class DAO {
     		return con;
     	}
     	
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:banco.db")) {
+        try {
+        	Connection connection = DriverManager.getConnection("jdbc:sqlite:banco.db");
 
             System.out.println("Conexão realizada !!!!");
             

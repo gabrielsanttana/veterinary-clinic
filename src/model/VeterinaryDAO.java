@@ -1,17 +1,19 @@
 package model;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Observable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class VeterinaryDAO extends Observable {
+public class VeterinaryDAO extends DAO {
     private static VeterinaryDAO instance;
-    private Map<Integer,Veterinary> listVeterinaries;
-    private Integer id;
 
-    private VeterinaryDAO(){
-        listVeterinaries = new HashMap<Integer, Veterinary>();
-        this.id = 0;
+    private VeterinaryDAO() {
+        DAO.getConnection();
+        createTable();
     }
 
     public static VeterinaryDAO getInstance(){
@@ -20,24 +22,110 @@ public class VeterinaryDAO extends Observable {
         }
         return instance;
     }
-
-    public void addVeterinay(String veterinaryName, String veterinaryAddress,String veterinaryPhone){
-        Veterinary veterinary = new Veterinary(id, veterinaryName, veterinaryAddress, veterinaryPhone);
-        listVeterinaries.put(id, veterinary);
-        this.id++;
-        setChanged();
-        notifyObservers(veterinary);
+    public boolean createTable() {
+    	try {
+            PreparedStatement stmt;
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS veterinary(" + 
+            		"id INTEGER PRIMARY KEY, " + 
+            		"name  VARCHAR, " + 
+            		"address VARCHAR, " + 
+            		"phone VARCHAR);");
+            executeUpdate(stmt);
+            
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(VeterinaryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    	
+    	return false;
     }
 
-    public Map<Integer,Veterinary> getAllVeterinaries(){
-        return listVeterinaries;
+// Partial CRUD    
+    // Create
+    public void addVeterinary(String name, String address, String phone) {
+        try {
+            PreparedStatement stmt;
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO veterinary (name,address,phone) VALUES (?,?,?)");
+            stmt.setString(2, name);
+            stmt.setString(3, address);
+            stmt.setString(6, phone);
+            executeUpdate(stmt);
+        } catch (SQLException ex) {
+            Logger.getLogger(VeterinaryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public Veterinary getVeterinary(int id){
-        return listVeterinaries.get(id);
+    private Veterinary buildObject(ResultSet rs) {
+        Veterinary veterinary = null;
+        try {
+            // int id, String nome, String endereco, String telefone, String cep
+            veterinary = new Veterinary(rs.getInt("id"), rs.getString("name"), rs.getString("address"), rs.getString("phone"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return veterinary;
     }
 
-    public void deleteVeterinay(Veterinary veterinary){
-        listVeterinaries.remove(veterinary.getId());
+    // RetrieveAll
+    public List<Veterinary> getAllVeterinary() {
+        List<Veterinary> veterinaries = new ArrayList<Veterinary>();
+        ResultSet rs = getResultSet("SELECT * FROM veterinary");
+        try {
+            while (rs.next()) {
+                veterinaries.add(buildObject(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return veterinaries;
     }
+
+    // RetrieveById
+    // Os grupos devem implementar as modificacoes para permitir que um cliente seja
+    // encontrado a partir de um id (inteiro).
+    // Sugestao, ao inves de usar um List, usar um Map.
+    public Veterinary getVeterinaryById(int id) {
+        Veterinary veterinary = null;
+        ResultSet rs = getResultSet("SELECT * FROM veterinary WHERE id = " + id);
+        try {
+            if (rs.next()) {
+                veterinary = buildObject(rs);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return veterinary;
+    }
+
+    // RetrieveByName
+    // Updade
+    /*public void update(Client client) {
+        try {
+            PreparedStatement stmt;
+            stmt = DAO.getConnection().prepareStatement("UPDATE client SET name=?, address=?, cep=?, email=?, phone=? WHERE id=?");
+            stmt.setString(1, client.getName());
+            stmt.setString(2, client.getAddress());
+            stmt.setString(3, client.getCep());
+            stmt.setString(4, client.getEmail());
+            stmt.setString(5, client.getPhone());
+            stmt.setInt(6, client.getId());
+            executeUpdate(stmt);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+        // Delete   
+    public void deleteClient(Client client) {
+        PreparedStatement stmt;
+        try {
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM client WHERE id = ?");
+            stmt.setInt(1, client.getId());
+            executeUpdate(stmt);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }*/
+
+    
 }
