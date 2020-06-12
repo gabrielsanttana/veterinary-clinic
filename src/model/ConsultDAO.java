@@ -14,6 +14,7 @@ public class ConsultDAO extends DAO {
 
 	    private ConsultDAO() {
 	        DAO.getConnection();
+	        createTable();
 	    }
 
 	    // Singleton
@@ -31,6 +32,8 @@ public class ConsultDAO extends DAO {
 	            		"                        id INTEGER PRIMARY KEY, " + 
 	            		"                        consultDate  datetime, " + 
 	            		"                        historic VARCHAR, " + 
+	            		"                        treatmentId INTEGER, " + 
+	            		"                        veterinaryId INTEGER, " + 
 	            		"                        FOREIGN KEY(treatmentId) REFERENCES treatment(id), " + 
 	            		"                        FOREIGN KEY(veterinaryId) REFERENCES veterinary(id) )"); 
 	            executeUpdate(stmt);

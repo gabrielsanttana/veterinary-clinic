@@ -28,7 +28,7 @@ public class VeterinaryDAO extends DAO {
     public boolean createTable() {
     	try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS veterinary(" + 
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS veterinary( " + 
             		"id INTEGER PRIMARY KEY, " + 
             		"name  VARCHAR, " + 
             		"address VARCHAR, " + 

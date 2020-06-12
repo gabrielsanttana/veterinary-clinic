@@ -13,6 +13,7 @@ public class ExamDAO extends DAO {
 
 	    private ExamDAO() {
 	        DAO.getConnection();
+	        createTable();
 	    }
 
 	    // Singleton
@@ -29,6 +30,7 @@ public class ExamDAO extends DAO {
 	            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS exam( " + 
 	            		"                        id INTEGER PRIMARY KEY, " + 
 	            		"                        examDesc  VARCHAR, " + 
+	            		"                        consultId INTEGER , " + 
 	            		"                        FOREIGN KEY(consultId) REFERENCES consult(id) ) " );
 	            executeUpdate(stmt);
 	            

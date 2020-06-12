@@ -14,6 +14,7 @@ public class TreatmentDAO extends DAO {
 
 	    private TreatmentDAO() {
 	        DAO.getConnection();
+	        createTable();
 	    }
 
 	    // Singleton
@@ -27,10 +28,11 @@ public class TreatmentDAO extends DAO {
 	    public boolean createTable() {
 	    	try {
 	            PreparedStatement stmt;
-	            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS treatment( \n" + 
+	            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS treatment( " + 
 	            		"                        id INTEGER PRIMARY KEY, \n" + 
 	            		"                        startDate  datetime ,\n" + 
 	            		"                        endDate datetime , " + 
+	            		"                        animalId INTEGER, " + 
 	            		"                        FOREIGN KEY(animalId) REFERENCES animal(id) ) ");
 	            executeUpdate(stmt);
 	            

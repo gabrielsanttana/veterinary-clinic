@@ -82,6 +82,14 @@ public class ClinicaVeterinaria implements Observer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+    	
+    	VeterinaryDAO.getInstance();
+    	ExamDAO.getInstance();
+    	ConsultDAO.getInstance();
+    	SpeciesDAO.getInstance();
+    	ClientDAO.getInstance();
+    	AnimalDAO.getInstance();
+    	TreatmentDAO.getInstance();
         new ClinicaVeterinaria().menuPrincipal();
     }
     

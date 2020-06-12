@@ -18,6 +18,7 @@ public class ClientDAO extends DAO {
 
     private ClientDAO() {
         DAO.getConnection();
+        createTable();
     }
 
     // Singleton

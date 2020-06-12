@@ -33,6 +33,8 @@ public class AnimalDAO extends DAO {
             		"                        animalName  VARCHAR, " + 
             		"                        animalAge INTEGER, " + 
             		"                        animalSex VARCHAR, " + 
+            		"                        speciesId INTEGER, " + 
+            		"                        clientId INTEGER, " + 
             		"                        FOREIGN KEY(speciesId) REFERENCES species(id), " +
             		"                        FOREIGN KEY(clientId) REFERENCES client(id))");
             executeUpdate(stmt);

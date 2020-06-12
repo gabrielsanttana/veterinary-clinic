@@ -13,6 +13,7 @@ public class SpeciesDAO extends DAO {
 
 	    private SpeciesDAO() {
 	        DAO.getConnection();
+	        createTable();
 	    }
 
 	    // Singleton
