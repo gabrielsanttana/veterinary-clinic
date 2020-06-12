@@ -1,26 +1,40 @@
 package model;
 
 public class Exam {
-    private String exam_desc;
-    private int id;
+	private String examDesc;
+	private int id;
+	private Consult consult;
 
+	public Exam() {
 
-    public Exam() {
+	}
 
-    }
+	public Exam(int id, String examDesc) {
+		this.id = id;
+		this.examDesc = examDesc;
+	}
 
-    public Exam(int id,String exam_desc) {
-    	this.id = id;
-    	this.exam_desc = exam_desc;
-    }
+	public Exam(int id, String examDesc, Consult consult) {
+		this.id = id;
+		this.examDesc = examDesc;
+		this.consult = consult;
+	}
 
-    public String getExamDesc() {
-    	return this.exam_desc;
-    }
+	public Consult getConsult() {
+		return consult;
+	}
 
-    public void setExamDesc(String exam_desc) {
-    	this.exam_desc = exam_desc;
-    }
+	public void setConsult(Consult consult) {
+		this.consult = consult;
+	}
+
+	public String getExamDesc() {
+		return examDesc;
+	}
+
+	public void setExamDesc(String examDesc) {
+		this.examDesc = examDesc;
+	}
 
 	public int getId() {
 		return id;
@@ -29,6 +43,5 @@ public class Exam {
 	public void setId(int id) {
 		this.id = id;
 	}
-    
-    
+
 }

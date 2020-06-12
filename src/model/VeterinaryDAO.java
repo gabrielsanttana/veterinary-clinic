@@ -63,7 +63,9 @@ public class VeterinaryDAO extends DAO {
         Veterinary veterinary = null;
         try {
             // int id, String nome, String endereco, String telefone, String cep
-            veterinary = new Veterinary(rs.getInt("id"), rs.getString("name"), rs.getString("address"), rs.getString("phone"));
+
+    	    List<Consult> listConsult= ConsultDAO.getInstance().getConsultByVeterinaryId(rs.getInt("id"));
+            veterinary = new Veterinary(rs.getInt("id"), rs.getString("name"), rs.getString("address"), rs.getString("phone"),listConsult);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -86,7 +88,7 @@ public class VeterinaryDAO extends DAO {
 
     // RetrieveById
     public Veterinary getVeterinaryById(int id) {
-        Veterinary veterinary = null;
+        Veterinary veterinary = new Veterinary();
         ResultSet rs = getResultSet("SELECT * FROM veterinary WHERE id = " + id);
         try {
             if (rs.next()) {
@@ -101,32 +103,30 @@ public class VeterinaryDAO extends DAO {
 
     // RetrieveByName
     // Updade
-    /*public void update(Client client) {
+    public void update(Veterinary veterinary) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE client SET name=?, address=?, cep=?, email=?, phone=? WHERE id=?");
-            stmt.setString(1, client.getName());
-            stmt.setString(2, client.getAddress());
-            stmt.setString(3, client.getCep());
-            stmt.setString(4, client.getEmail());
-            stmt.setString(5, client.getPhone());
-            stmt.setInt(6, client.getId());
+            stmt = DAO.getConnection().prepareStatement("UPDATE veterinary SET veterinaryName=?, veterinaryAddress=?, veterinaryPhone=? WHERE id=?");
+            stmt.setString(1, veterinary.getVeterinaryName());
+            stmt.setString(2, veterinary.getVeterinaryAddress());
+            stmt.setString(3, veterinary.getVeterinaryPhone());
+            stmt.setInt(4, veterinary.getId());
             executeUpdate(stmt);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
         // Delete   
-    public void deleteClient(Client client) {
+    public void deleteVeterinary(Veterinary veterinary) {
         PreparedStatement stmt;
         try {
-            stmt = DAO.getConnection().prepareStatement("DELETE FROM client WHERE id = ?");
-            stmt.setInt(1, client.getId());
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM veterinary WHERE id = ?");
+            stmt.setInt(1, veterinary.getId());
             executeUpdate(stmt);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }*/
+    }
 
     
 }

@@ -94,7 +94,7 @@ public class ClientDAO extends DAO {
     // encontrado a partir de um id (inteiro).
     // Sugestao, ao inves de usar um List, usar um Map.
     public Client getClientById(int id) {
-        Client client = null;
+        Client client = new Client();
         ResultSet rs = getResultSet("SELECT * FROM client WHERE id = " + id);
         try {
             if (rs.next()) {
