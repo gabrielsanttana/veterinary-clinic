@@ -53,10 +53,10 @@ public class AnimalDAO extends DAO {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (animalName,animalAge,animalSex,clientId) VALUES (?,?,?,?)");
-            stmt.setString(2, animalName);
-            stmt.setInt(3, animalAge);
-            stmt.setString(4, animalSex);
-            stmt.setInt(5, clientId);
+            stmt.setString(1, animalName);
+            stmt.setInt(2, animalAge);
+            stmt.setString(3, animalSex);
+            stmt.setInt(4, clientId);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,11 +64,11 @@ public class AnimalDAO extends DAO {
     }
 
     private Animal buildObject(ResultSet rs) {
-    	Animal animal = null;
+    	Animal animal = new Animal();
     	
         try {
-            // int id, String nome, String endereco, String telefone, String cep
-        	List<Treatment> treataments = TreatmentDAO.getInstance().getTreatmentByAnimalId(rs.getInt("id"));
+        	List<Treatment> treataments = new ArrayList<Treatment>();
+//        	List<Treatment> treataments = TreatmentDAO.getInstance().getTreatmentByAnimalId(rs.getInt("id"));
         	Species species = SpeciesDAO.getInstance().getSpeciesById(rs.getInt("speciesId"));
             Client client = ClientDAO.getInstance().getClientById(rs.getInt("clientId"));
         	

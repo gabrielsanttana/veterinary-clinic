@@ -54,7 +54,7 @@ public class SpeciesDAO extends DAO {
 	    }
 
 	    private Species buildObject(ResultSet rs) {
-	        Species species = null;
+	        Species species = new Species();
 	        try {
 	            // int id, String nome, String endereco, String telefone, String cep
 	            species = new Species(rs.getInt("id"), rs.getString("speciesName"));
@@ -80,7 +80,7 @@ public class SpeciesDAO extends DAO {
 
 	    // RetrieveById
 	    public Species getSpeciesById(int id) {
-	        Species species = null;
+	        Species species = new Species();
 	        ResultSet rs = getResultSet("SELECT * FROM species WHERE id = " + id);
 	        try {
 	            if (rs.next()) {

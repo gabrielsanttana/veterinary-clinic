@@ -60,11 +60,12 @@ public class VeterinaryDAO extends DAO {
     }
 
     private Veterinary buildObject(ResultSet rs) {
-        Veterinary veterinary = null;
+        Veterinary veterinary = new Veterinary();
         try {
             // int id, String nome, String endereco, String telefone, String cep
 
-    	    List<Consult> listConsult= ConsultDAO.getInstance().getConsultByVeterinaryId(rs.getInt("id"));
+    	    List<Consult> listConsult= new ArrayList<Consult>();
+//    	    List<Consult> listConsult= ConsultDAO.getInstance().getConsultByVeterinaryId(rs.getInt("id"));
             veterinary = new Veterinary(rs.getInt("id"), rs.getString("name"), rs.getString("address"), rs.getString("phone"),listConsult);
         } catch (SQLException e) {
             e.printStackTrace();

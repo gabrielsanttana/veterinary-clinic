@@ -64,9 +64,12 @@ public class TreatmentDAO extends DAO {
 	        try {
 	            // int id, String nome, String endereco, String telefone, String cep
 	        	Animal animal = AnimalDAO.getInstance().getAnimalById(rs.getInt("animalId"));
-	        	List<Consult> listConsult = ConsultDAO.getInstance().getConsultByTreatmentId(rs.getInt("id"));
+	        	List<Consult> listConsult = new ArrayList<Consult>();
+//	        	List<Consult> listConsult = ConsultDAO.getInstance().getConsultByTreatmentId(rs.getInt("id"));
 	        	//rs.getInt("animalId")
-	            treatment = new Treatment(rs.getInt("id"), rs.getDate("startDate"), rs.getDate("endDate"),listConsult,animal);
+	        	Date startDate = Util.StringToDate(rs.getString("startDate"));
+	        	Date endDate = Util.StringToDate(rs.getString("endDate"));
+	            treatment = new Treatment(rs.getInt("id"), startDate, endDate,listConsult,animal);
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
@@ -89,7 +92,7 @@ public class TreatmentDAO extends DAO {
 
 	    // RetrieveById
 	    public Treatment getTreatmentById(int id) {
-	        Treatment treatment = null;
+	        Treatment treatment = new Treatment();
 	        ResultSet rs = getResultSet("SELECT * FROM treatment WHERE id = " + id);
 	        try {
 	            if (rs.next()) {

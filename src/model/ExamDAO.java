@@ -84,7 +84,7 @@ public class ExamDAO extends DAO {
 
 	    // RetrieveById
 	    public Exam getExamById(int id) {
-	        Exam exam = null;
+	        Exam exam = new Exam();
 	        ResultSet rs = getResultSet("SELECT * FROM exam WHERE id = " + id);
 	        try {
 	            if (rs.next()) {

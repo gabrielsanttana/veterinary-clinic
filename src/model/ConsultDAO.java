@@ -69,8 +69,10 @@ public class ConsultDAO extends DAO {
 
 	        	Treatment treatment = TreatmentDAO.getInstance().getTreatmentById(rs.getInt("treatmentId"));
 	    	    Veterinary veterinary = VeterinaryDAO.getInstance().getVeterinaryById(rs.getInt("veterinaryId"));
-	    	    List<Exam> listExam = ExamDAO.getInstance().getExamByConsultId(rs.getInt("id"));
-	            consult = new Consult(rs.getInt("id"), rs.getDate("consultDate"), rs.getString("historic"),treatment,veterinary,listExam);
+	    	    List<Exam> listExam = new ArrayList<Exam>();
+//	    	    List<Exam> listExam = ExamDAO.getInstance().getExamByConsultId(rs.getInt("id"));
+	    	    Date consultDate = Util.StringToDate(rs.getString("consultDate"));
+	            consult = new Consult(rs.getInt("id"), consultDate , rs.getString("historic"),treatment,veterinary,listExam);
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }

@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -20,5 +21,17 @@ public class Util {
 		}
 	    return ts;
 	}
+	
+	public static Date StringToDate(String d){
+		Date date = new Date(); 
+		try {
+			date=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(d);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}  
+		return date;
+		    
+	}  
+
 
 }
