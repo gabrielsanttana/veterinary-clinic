@@ -28,11 +28,14 @@ public class AnimalDAO extends DAO {
     public boolean createTable() {
     	try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS animal( \n" + 
-            		"                        id INTEGER PRIMARY KEY, \n" + 
-            		"                        animalName  VARCHAR,\n" + 
-            		"                        animalAge INTEGER, \n" + 
-            		"                        animalSex VARCHAR, \n" + 
+            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS animal( " + 
+            		"                        id INTEGER PRIMARY KEY, " + 
+            		"                        animalName  VARCHAR, " + 
+            		"                        animalAge INTEGER, " + 
+            		"                        animalSex VARCHAR, " + 
+            		"                        speciesId INTEGER, " + 
+            		"                        clientId INTEGER, " + 
+            		"                        FOREIGN KEY(speciesId) REFERENCES species(id), " +
             		"                        FOREIGN KEY(clientId) REFERENCES client(id))");
             executeUpdate(stmt);
             
@@ -50,10 +53,10 @@ public class AnimalDAO extends DAO {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (animalName,animalAge,animalSex,clientId) VALUES (?,?,?,?)");
-            stmt.setString(2, animalName);
-            stmt.setInt(3, animalAge);
-            stmt.setString(4, animalSex);
-            stmt.setInt(5, clientId);
+            stmt.setString(1, animalName);
+            stmt.setInt(2, animalAge);
+            stmt.setString(3, animalSex);
+            stmt.setInt(4, clientId);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,12 +64,15 @@ public class AnimalDAO extends DAO {
     }
 
     private Animal buildObject(ResultSet rs) {
-    	Animal animal = null;
-    	Treatment[] treataments = new Treatment[0];
-    	Species species = new Species();
+    	Animal animal = new Animal();
+    	
         try {
-            // int id, String nome, String endereco, String telefone, String cep
-        	animal = new Animal(rs.getInt("id"), rs.getString("animalName"), rs.getInt("animalAge"), rs.getString("animalSex"), rs.getInt("clientId"), treataments, species);
+        	List<Treatment> treataments = new ArrayList<Treatment>();
+//        	List<Treatment> treataments = TreatmentDAO.getInstance().getTreatmentByAnimalId(rs.getInt("id"));
+        	Species species = SpeciesDAO.getInstance().getSpeciesById(rs.getInt("speciesId"));
+            Client client = ClientDAO.getInstance().getClientById(rs.getInt("clientId"));
+        	
+        	animal = new Animal(rs.getInt("id"), rs.getString("animalName"), rs.getInt("animalAge"), rs.getString("animalSex"), client, treataments, species);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -92,7 +98,7 @@ public class AnimalDAO extends DAO {
     // encontrado a partir de um id (inteiro).
     // Sugestao, ao inves de usar um List, usar um Map.
     public Animal getAnimalById(int id) {
-        Animal animal = null;
+        Animal animal = new Animal();
         ResultSet rs = getResultSet("SELECT * FROM animal WHERE id = " + id);
         try {
             if (rs.next()) {
@@ -120,31 +126,31 @@ public class AnimalDAO extends DAO {
 
     // RetrieveByName
     // Updade
-//    public void update(Animal animal) {
-//        try {
-//            PreparedStatement stmt;
-//            stmt = DAO.getConnection().prepareStatement("UPDATE animal SET name=?, address=?, cep=?, email=?, phone=? WHERE id=?");
-//            stmt.setString(1, client.getName());
-//            stmt.setString(2, client.getAddress());
-//            stmt.setString(3, client.getCep());
-//            stmt.setString(4, client.getEmail());
-//            stmt.setString(5, client.getPhone());
-//            stmt.setInt(6, client.getId());
-//            executeUpdate(stmt);
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
-//        // Delete   
-//    public void deleteClient(Client client) {
-//        PreparedStatement stmt;
-//        try {
-//            stmt = DAO.getConnection().prepareStatement("DELETE FROM client WHERE id = ?");
-//            stmt.setInt(1, client.getId());
-//            executeUpdate(stmt);
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
+    public void update(Animal animal) {
+        try {
+            PreparedStatement stmt;
+            stmt = DAO.getConnection().prepareStatement("UPDATE animal SET animalName=?, animalAge=?, animalSex=?, clientId=?, species=? WHERE id=?");
+            stmt.setString(1, animal.getAnimalName());
+            stmt.setInt(2, animal.getAnimalAge());
+            stmt.setString(3, animal.getAnimalSex());
+            stmt.setInt(4, animal.getClient().getId());
+            stmt.setInt(5, animal.getSpecies().getId());
+            stmt.setInt(6, animal.getId());
+            executeUpdate(stmt);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+        // Delete   
+    public void deleteAnimal(Animal animal) {
+        PreparedStatement stmt;
+        try {
+            stmt = DAO.getConnection().prepareStatement("DELETE FROM animel WHERE id = ?");
+            stmt.setInt(1, animal.getId());
+            executeUpdate(stmt);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 
 }

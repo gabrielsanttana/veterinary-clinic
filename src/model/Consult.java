@@ -1,24 +1,61 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Consult {
 	private int id;
 	private Date consultDate;
 	private String historic;
+	private Treatment treatment;
 	private Veterinary veterinary;
-	private Exam exam;
+	private List<Exam> exam;
 
 	public Consult() {
 	}
 
-	public Consult(int id,Date consultDate, String historic, Veterinary veterinary, Exam exam) {
+	public Consult(int id,Date consultDate, String historic, Veterinary veterinary, List<Exam> exam) {
 		this.id = id;
 		this.consultDate = consultDate;
 		this.historic = historic;
 		this.veterinary = veterinary;
+		this.exam = exam;
+	}
+	
+	public Consult(int id,Date consultDate, String historic, Treatment treatment, Veterinary veterinary, List<Exam> exam) {
+		this.id = id;
+		this.consultDate = consultDate;
+		this.historic = historic;
+		this.treatment = treatment;
+		this.veterinary = veterinary;
+		this.exam = exam;
+	}
+	
+	
 
-	}	
+	public Treatment getTreatment() {
+		return treatment;
+	}
+
+	public void setTreatment(Treatment treatment) {
+		this.treatment = treatment;
+	}
+
+	public Veterinary getVeterinary() {
+		return veterinary;
+	}
+
+	public void setVeterinary(Veterinary veterinary) {
+		this.veterinary = veterinary;
+	}
+
+	public List<Exam> getExam() {
+		return exam;
+	}
+
+	public void setExam(List<Exam> exam) {
+		this.exam = exam;
+	}
 
 	public int getId() {
 		return id;
@@ -44,21 +81,6 @@ public class Consult {
 		this.consultDate = consultaDate;
 	}
 
-	public Veterinary vetveterinary() {
-		return veterinary;
-	}
-
-	public void setVeterinary(Veterinary veterinary) {
-		this.veterinary = veterinary;
-	}
-
-	public Exam getExam() {
-		return exam;
-	}
-
-	public void setExam(Exam exam) {
-		this.exam = exam;
-	}
 
 	public String listConsults() {
 		return "";

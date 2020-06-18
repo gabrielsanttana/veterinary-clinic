@@ -1,4 +1,4 @@
-package view;
+package view.tableModel;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import model.Veterinary;
 public class VeterinaryTableModel extends AbstractTableModel {
 
     private List<Veterinary> listVeterinary;
-    private String[] colunas = {"Nome","Endereço","Telefone"};    
+    private String[] colunas = {"ID","Nome","Endereço","Telefone"};    
 
 
     public VeterinaryTableModel(List<Veterinary> listVeterinary) {
@@ -35,11 +35,13 @@ public class VeterinaryTableModel extends AbstractTableModel {
     public Object getValueAt(int linha, int coluna) {        
         Veterinary veterinary = listVeterinary.get(linha);         
         switch (coluna) {
-            case 0:
-                return veterinary.getVeterinaryName();
+			case 0:
+				return veterinary.getId();
             case 1:
-                return veterinary.getVeterinaryAddress();    
+                return veterinary.getVeterinaryName();
             case 2:
+                return veterinary.getVeterinaryAddress();    
+            case 3:
                 return veterinary.getVeterinaryPhone();
         }        
         return null;        

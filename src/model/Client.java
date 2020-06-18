@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Client {
 
 	private int id;
@@ -8,7 +10,7 @@ public class Client {
 	private String phone;
 	private String cep;
 	private String email;
-	private Animal[] animals;
+	private List<Animal> animals;
 
 	public Client() {}
 
@@ -21,12 +23,33 @@ public class Client {
 		this.email = email;
 	}
 
+	public Client(int id, String name, String address, String phone, String cep, String email, List<Animal> animals) {
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.cep = cep;
+		this.email = email;
+		this.animals = animals;
+	}
+	
+
 	public int Reg_Cli() {
 		return 0;
 	}
 
 	public String Con_Cli() {
 		return "";
+	}
+	
+	
+
+	public List<Animal> getAnimals() {
+		return animals;
+	}
+
+	public void setAnimals(List<Animal> animals) {
+		this.animals = animals;
 	}
 
 	public String getName() {
@@ -67,14 +90,6 @@ public class Client {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Animal[] getAnimals() {
-		return animals;
-	}
-
-	public void setAnimals(Animal[] animals) {
-		this.animals = animals;
 	}
 
 	public int getId() {

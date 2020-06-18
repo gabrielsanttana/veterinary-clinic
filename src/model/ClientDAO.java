@@ -18,6 +18,7 @@ public class ClientDAO extends DAO {
 
     private ClientDAO() {
         DAO.getConnection();
+        createTable();
     }
 
     // Singleton
@@ -36,12 +37,13 @@ public class ClientDAO extends DAO {
             		"                        name  VARCHAR,\n" + 
             		"                        address VARCHAR, \n" + 
             		"                        phone VARCHAR, \n" + 
+            		"                        email VARCHAR, \n" + 
             		"                        cep VARCHAR)");
             executeUpdate(stmt);
             
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     	
     	return false;
@@ -53,11 +55,11 @@ public class ClientDAO extends DAO {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO client (name,address,cep,email,phone) VALUES (?,?,?,?,?)");
-            stmt.setString(2, name);
-            stmt.setString(3, address);
-            stmt.setString(4, cep);
-            stmt.setString(5, email);
-            stmt.setString(6, phone);
+            stmt.setString(1, name);
+            stmt.setString(2, address);
+            stmt.setString(3, cep);
+            stmt.setString(4, email);
+            stmt.setString(5, phone);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(ClientDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -65,7 +67,7 @@ public class ClientDAO extends DAO {
     }
 
     private Client buildObject(ResultSet rs) {
-        Client client = null;
+        Client client = new Client();
         try {
             // int id, String nome, String endereco, String telefone, String cep
             client = new Client(rs.getInt("id"), rs.getString("name"), rs.getString("address"), rs.getString("phone"), rs.getString("cep"), rs.getString("email"));
@@ -94,7 +96,7 @@ public class ClientDAO extends DAO {
     // encontrado a partir de um id (inteiro).
     // Sugestao, ao inves de usar um List, usar um Map.
     public Client getClientById(int id) {
-        Client client = null;
+        Client client = new Client();
         ResultSet rs = getResultSet("SELECT * FROM client WHERE id = " + id);
         try {
             if (rs.next()) {
