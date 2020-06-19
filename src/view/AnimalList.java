@@ -45,7 +45,7 @@ public class AnimalList extends JFrame {
 	 */
 	public AnimalList() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 800, 384);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,7 +67,7 @@ public class AnimalList extends JFrame {
 		lblNewJgoodiesTitle.setBounds(10, 11, 142, 29);
 		contentPane.add(lblNewJgoodiesTitle);
 		
-		JButton btnNewAnimal = new JButton("Cadastrar Animal");
+		JButton btnNewAnimal = new JButton("Cadastrar Novo Animal");
 		btnNewAnimal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -78,7 +78,15 @@ public class AnimalList extends JFrame {
 			}
 			
 		});
-		btnNewAnimal.setBounds(300, 16, 124, 23);
+		btnNewAnimal.setBounds(264, 11, 160, 29);
 		contentPane.add(btnNewAnimal);
+		
+		JButton btnTreatment = new JButton("Marcar Tratamento");
+		btnTreatment.setBounds(434, 52, 132, 35);
+		contentPane.add(btnTreatment);
+		
+		JButton btnConsult = new JButton("Marcar Consulta");
+		btnConsult.setBounds(434, 107, 132, 35);
+		contentPane.add(btnConsult);
 	}
 }
