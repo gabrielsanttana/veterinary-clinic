@@ -1,4 +1,4 @@
-package view.list;
+package view;
 
 import java.awt.Font;
 import java.util.List;
@@ -13,11 +13,18 @@ import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
 import model.Animal;
+import model.Client;
 import view.tableModel.*;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class AnimalList extends JFrame {
 
+	
+	private Client client;
+	
 	/**
 	 * 
 	 */
@@ -27,6 +34,12 @@ public class AnimalList extends JFrame {
 	private AnimalTableModel model;
     private List<Animal> listAnimal;
 
+    
+    public void SetClient(Client c) 
+    {
+    	client = c;    	
+    }
+    
 	/**
 	 * Create the frame.
 	 */
@@ -51,7 +64,21 @@ public class AnimalList extends JFrame {
 		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Animal");
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewJgoodiesTitle.setBounds(144, 11, 142, 29);
+		lblNewJgoodiesTitle.setBounds(10, 11, 142, 29);
 		contentPane.add(lblNewJgoodiesTitle);
+		
+		JButton btnNewAnimal = new JButton("Cadastrar Animal");
+		btnNewAnimal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				RegistryAnimalFrame frame = new RegistryAnimalFrame();
+				frame.SetClient(client);
+				frame.setVisible(true);
+				dispose();
+			}
+			
+		});
+		btnNewAnimal.setBounds(300, 16, 124, 23);
+		contentPane.add(btnNewAnimal);
 	}
 }

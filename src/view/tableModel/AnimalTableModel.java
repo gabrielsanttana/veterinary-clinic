@@ -5,7 +5,6 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import model.Animal;
-import model.Veterinary;
 
 public class AnimalTableModel extends AbstractTableModel {
 
