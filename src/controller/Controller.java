@@ -81,4 +81,8 @@ public class Controller {
 		VeterinaryDAO.getInstance().addVeterinary(veterinaryName, veterinaryAddress, veterinaryPhone);
 	}
 
+	public static List<Animal> getAnimalsByClient(int clientID) {
+		return AnimalDAO.getInstance().getAnimalByClient(clientID);
+	}
+
 }

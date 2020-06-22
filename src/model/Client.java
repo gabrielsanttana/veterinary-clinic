@@ -13,7 +13,15 @@ public class Client {
 	private List<Animal> animals;
 
 	public Client() {}
-
+	
+	public Client(String name, String address, String phone, String cep, String email) {
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.cep = cep;
+		this.email = email;
+	}
+	
 	public Client(int id, String name, String address, String phone, String cep, String email) {
 		this.id = id;
 		this.name = name;
