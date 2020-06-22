@@ -1,4 +1,4 @@
-package view;
+package view.show;
 
 import java.awt.Font;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ListSelectionModel;
 
 
-public class ClientList extends JFrame {
+public class ShowClient extends JFrame {
 
 	/**
 	 * 
@@ -35,9 +35,9 @@ public class ClientList extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ClientList() {
+	public ShowClient() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 460, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -65,12 +65,10 @@ public class ClientList extends JFrame {
 		btnFind.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				RegistryClientFrame r = new RegistryClientFrame();
 				int index = table.getSelectedRow();
-				Client c = listClient.get(table.convertRowIndexToModel(index));
-				
-				r.SetClient(c);
-				r.setVisible(true);
+				Client client = listClient.get(table.convertRowIndexToModel(index));
+				ShowAnimal animalList = new ShowAnimal(client);
+				animalList.setVisible(true);
 				dispose();
 			}
 		});

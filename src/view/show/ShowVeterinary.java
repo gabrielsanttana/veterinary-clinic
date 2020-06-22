@@ -1,4 +1,4 @@
-package view.list;
+package view.show;
 
 import java.awt.Font;
 import java.util.List;
@@ -7,16 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 
 import controller.Controller;
-import model.*;
-import view.tableModel.*;
+import model.Veterinary;
+import view.tableModel.VeterinaryTableModel;
 
 
-public class ExamList extends JFrame {
+public class ShowVeterinary extends JFrame {
 
 	/**
 	 * 
@@ -24,13 +25,13 @@ public class ExamList extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-	private ExamTableModel model;
-    private List<Exam> listExam;
+	private VeterinaryTableModel model;
+    private List<Veterinary> listVeterinary;
 
 	/**
 	 * Create the frame.
 	 */
-	public ExamList() {
+	public ShowVeterinary() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -41,14 +42,16 @@ public class ExamList extends JFrame {
 		
 		table = new JTable();
 		table.setToolTipText("");
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBounds(10, 51, 414, 199);
 		contentPane.add(table);
-		listExam = Controller.getAllExam();
-		model = new ExamTableModel(listExam);
+		listVeterinary = Controller.getAllVeterinary();
+		model = new VeterinaryTableModel(listVeterinary);
 		table.setModel(model);
-
+		if (table.getRowCount() > 0)
+			table.setRowSelectionInterval(0, 0);
 		
-		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Exam");
+		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Veterinarios");
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewJgoodiesTitle.setBounds(144, 11, 142, 29);

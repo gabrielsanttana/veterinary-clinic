@@ -11,8 +11,7 @@ public class Consult {
 	private Veterinary veterinary;
 	private List<Exam> exam;
 
-	public Consult() {
-	}
+	public Consult() {}
 
 	public Consult(int id,Date consultDate, String historic, Veterinary veterinary, List<Exam> exam) {
 		this.id = id;
@@ -29,9 +28,7 @@ public class Consult {
 		this.treatment = treatment;
 		this.veterinary = veterinary;
 		this.exam = exam;
-	}
-	
-	
+	}	
 
 	public Treatment getTreatment() {
 		return treatment;

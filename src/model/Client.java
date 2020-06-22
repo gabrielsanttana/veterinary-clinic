@@ -47,9 +47,8 @@ public class Client {
 	}
 
 	public String Con_Cli() {
-		return "";
-	}
-	
+		return String.valueOf(id);
+	}	
 	
 
 	public List<Animal> getAnimals() {

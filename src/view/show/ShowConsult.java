@@ -1,4 +1,4 @@
-package view.list;
+package view.show;
 
 import java.awt.Font;
 import java.util.List;
@@ -7,48 +7,47 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 
 import controller.Controller;
-import model.Veterinary;
-import view.tableModel.VeterinaryTableModel;
+import model.*;
+import view.tableModel.*;
 
 
-public class VeterinaryList extends JFrame {
-
-	/**
-	 * 
-	 */
+public class ShowConsult extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-	private VeterinaryTableModel model;
-    private List<Veterinary> listVeterinary;
+	private ConsultTableModel model;
+    private List<Consult> listConsult;
 
 	/**
 	 * Create the frame.
 	 */
-	public VeterinaryList() {
+	public ShowConsult(Treatment treat) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
+		contentPane.setLayout(null);		
 		
 		table = new JTable();
 		table.setToolTipText("");
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBounds(10, 51, 414, 199);
 		contentPane.add(table);
-		listVeterinary = Controller.getAllVeterinary();
-		model = new VeterinaryTableModel(listVeterinary);
+		listConsult = Controller.getAllConsult();
+		model = new ConsultTableModel(listConsult);
+		//TODO show only the right treatments
 		table.setModel(model);
-
+		if (table.getRowCount() > 0)
+			table.setRowSelectionInterval(0, 0);
 		
-		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Veterinarios");
+		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Consult");
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewJgoodiesTitle.setBounds(144, 11, 142, 29);

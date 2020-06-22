@@ -1,4 +1,4 @@
-package view;
+package view.registry;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,23 +13,23 @@ import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
 
-public class RegistryVetFrame extends JFrame {
+public class RegistryClient extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtName;
 	private JTextField txtAddress;
 	private JTextField txtPhone;
+	private JTextField txtCep;
+	private JTextField txtEmail;
+	private JButton btnSalvar;
 	
 	/**
 	 * Create the frame.
 	 */
-	public RegistryVetFrame() {
+	public RegistryClient() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 255, 180);
+		setBounds(100, 100, 255, 240);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -58,22 +58,40 @@ public class RegistryVetFrame extends JFrame {
 		txtPhone.setBounds(66, 71, 162, 20);
 		contentPane.add(txtPhone);
 		
-		JLabel lblPhone = new JLabel("Phone");
+		JLabel lblPhone = new JLabel("phone");
 		lblPhone.setBounds(10, 74, 46, 14);
 		contentPane.add(lblPhone);
 		
-		JButton btnSalvar = new JButton("Salvar");
+		JLabel lblCep = new JLabel("cep");
+		lblCep.setBounds(10, 106, 46, 14);
+		contentPane.add(lblCep);
+		
+		txtCep = new JTextField();
+		txtCep.setColumns(10);
+		txtCep.setBounds(66, 102, 162, 20);
+		contentPane.add(txtCep);
+		
+		JLabel lblAdress_1_1 = new JLabel("email");
+		lblAdress_1_1.setBounds(10, 135, 46, 14);
+		contentPane.add(lblAdress_1_1);
+		
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
+		txtEmail.setBounds(66, 131, 162, 20);
+		contentPane.add(txtEmail);
+		
+		btnSalvar = new JButton("Salvar");
 		btnSalvar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.addVeterinary(txtName.getText(), txtAddress.getText(),
-						txtPhone.getText());
+				Controller.addCliente(txtName.getText(), txtAddress.getText(),
+						txtPhone.getText(), txtCep.getText(), txtEmail.getText());
 				JOptionPane.showMessageDialog(null, "Success", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
 				dispose();
 			}
 		});
 		
-		btnSalvar.setBounds(10, 102, 89, 23);
+		btnSalvar.setBounds(10, 172, 89, 23);
 		contentPane.add(btnSalvar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -83,8 +101,26 @@ public class RegistryVetFrame extends JFrame {
 				dispose();
 			}
 		});
-		btnCancelar.setBounds(139, 102, 89, 23);
+		btnCancelar.setBounds(140, 172, 89, 23);
 		contentPane.add(btnCancelar);
 	}
-
+	
+	/*
+	public void SetClient(Client c) 
+	{
+		btnSalvar.setEnabled(false);
+		txtName.setText(c.getName());
+		txtAddress.setText(c.getAddress());
+		txtPhone.setText(c.getPhone());
+		txtCep.setText(c.getCep());
+		txtEmail.setText(c.getEmail());
+		
+		c.setAnimals(Controller.getAnimalsByClient(c.getId()));
+		
+		currentClient = c;
+		
+		btnSalvar.setVisible(false);
+	}
+	 */
+	
 }

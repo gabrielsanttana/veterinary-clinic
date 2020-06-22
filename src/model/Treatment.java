@@ -7,8 +7,8 @@ import java.util.List;
 public class Treatment {
 	private Date startDate;
 	private Date endDate;
-	private List<Consult> listConsult;
 	private Animal animal;
+	private List<Consult> listConsult;
 	private int id;
 
 	public Treatment(int id, Date startDate, Date endDate) {

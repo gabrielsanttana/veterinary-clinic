@@ -1,4 +1,4 @@
-package view;
+package view.registry;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -14,13 +14,12 @@ import javax.swing.border.EmptyBorder;
 import controller.Controller;
 import model.Client;
 
-public class RegistryAnimalFrame extends JFrame {
+public class RegistryAnimal extends JFrame {
 
-	private Client client;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
+	private Client client;	
+	
 	private JPanel contentPane;
 	private JTextField txtName;
 	private JTextField txtAge;
@@ -29,7 +28,7 @@ public class RegistryAnimalFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistryAnimalFrame() {
+	public RegistryAnimal() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 255, 181);
 		contentPane = new JPanel();

@@ -11,7 +11,7 @@ import model.SpeciesDAO;
 import model.TreatmentDAO;
 import model.VeterinaryDAO;
 
-public class ClinicaVeterinaria 
+public final class ClinicaVeterinaria 
 {
 
     public static void main(String[] args) {
