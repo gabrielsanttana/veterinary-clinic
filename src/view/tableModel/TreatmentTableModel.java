@@ -2,39 +2,20 @@ package view.tableModel;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
+import model.Treatment;
 
-import model.*;
-
-public class TreatmentTableModel extends AbstractTableModel {
-
-    private List<Treatment> listTreatment;
-    private String[] colunas = {"ID","Data inicio","Data fim","Animal"};    
+public class TreatmentTableModel extends BaseTableModel<Treatment> {   
 
 
     public TreatmentTableModel(List<Treatment> listTreatment) {
-        this.listTreatment = listTreatment; 
+    	super(listTreatment);
+    	columns = new String[]{"ID","Data inicio","Data fim","Animal"};    
     }
-
+    
     @Override
-    public String getColumnName(int column) {
-        return colunas[column];
-    } 
-
-    @Override
-    public int getColumnCount() {
-        return colunas.length;
-    }
-
-    @Override
-    public int getRowCount() {
-        return listTreatment.size();
-    }
-
-    @Override
-    public Object getValueAt(int linha, int coluna) {        
-    	Treatment treatment = listTreatment.get(linha);         
-        switch (coluna) {
+    public Object getValueAt(int row, int col) {        
+    	Treatment treatment = list.get(row);         
+        switch (col) {
             case 0:
                 return treatment.getId();
             case 1:
@@ -48,10 +29,6 @@ public class TreatmentTableModel extends AbstractTableModel {
     }
 
 
-
-    /**
-     * 
-     */
     private static final long serialVersionUID = 8089116544555428084L;
 
 

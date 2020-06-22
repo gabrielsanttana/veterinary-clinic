@@ -2,39 +2,19 @@ package view.tableModel;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
+import model.Exam;
 
-import model.*;
-
-public class ExamTableModel extends AbstractTableModel {
-
-    private List<Exam> listExam;
-    private String[] colunas = {"ID","Descricao","Consulta data","Consulta ID"};    
-
+public class ExamTableModel extends BaseTableModel<Exam> {
 
     public ExamTableModel(List<Exam> listExam) {
-        this.listExam = listExam; 
+    	super(listExam);
+        columns = new String[]{"ID","Descricao","Consulta data","Consulta ID"};
     }
 
     @Override
-    public String getColumnName(int column) {
-        return colunas[column];
-    } 
-
-    @Override
-    public int getColumnCount() {
-        return colunas.length;
-    }
-
-    @Override
-    public int getRowCount() {
-        return listExam.size();
-    }
-
-    @Override
-    public Object getValueAt(int linha, int coluna) {        
-    	Exam exam = listExam.get(linha);         
-        switch (coluna) {
+    public Object getValueAt(int row, int col) {        
+    	Exam exam = list.get(row);         
+        switch (col) {
 			case 0:
 				return exam.getId();
             case 1:

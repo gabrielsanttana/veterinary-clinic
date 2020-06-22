@@ -2,39 +2,21 @@ package view.tableModel;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import model.Animal;
 
-public class AnimalTableModel extends AbstractTableModel {
-
-    private List<Animal> listAnimal;
-    private String[] colunas = {"ID","Nome","Idade","Sexo","Espécie","Proprietário"};    
+public class AnimalTableModel extends BaseTableModel<Animal> {    
 
 
     public AnimalTableModel(List<Animal> listAnimal) {
-        this.listAnimal = listAnimal; 
+    	super(listAnimal);
+    	columns = new String[]{"ID","Nome","Idade","Sexo","Espécie","Proprietário"};    
     }
 
-    @Override
-    public String getColumnName(int column) {
-        return colunas[column];
-    } 
 
     @Override
-    public int getColumnCount() {
-        return colunas.length;
-    }
-
-    @Override
-    public int getRowCount() {
-        return listAnimal.size();
-    }
-
-    @Override
-    public Object getValueAt(int linha, int coluna) {        
-    	Animal animal = listAnimal.get(linha);         
-        switch (coluna) {
+    public Object getValueAt(int row, int col) {        
+    	Animal animal = list.get(row);         
+        switch (col) {
 			case 0:
 				return animal.getId();
             case 1:

@@ -2,39 +2,19 @@ package view.tableModel;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import model.Consult;
 
-public class ConsultTableModel extends AbstractTableModel {
-
-    private List<Consult> listConsult;
-    private String[] colunas = {"ID","Data da Consulta","Historico","Animal","Veterinario"};    
-
+public class ConsultTableModel extends BaseTableModel<Consult> {
 
     public ConsultTableModel(List<Consult> listConsult) {
-        this.listConsult = listConsult; 
+    	super(listConsult);
+        columns = new String[]{"ID","Data da Consulta","Historico","Animal","Veterinario"};
     }
 
     @Override
-    public String getColumnName(int column) {
-        return colunas[column];
-    } 
-
-    @Override
-    public int getColumnCount() {
-        return colunas.length;
-    }
-
-    @Override
-    public int getRowCount() {
-        return listConsult.size();
-    }
-
-    @Override
-    public Object getValueAt(int linha, int coluna) {        
-    	Consult consult = listConsult.get(linha);         
-        switch (coluna) {
+    public Object getValueAt(int row, int col) {        
+    	Consult consult = list.get(row);         
+        switch (col) {
 			case 0:
 				return consult.getId();
             case 1:
@@ -59,9 +39,6 @@ public class ConsultTableModel extends AbstractTableModel {
 
 
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 8089116544555428084L;
 
 

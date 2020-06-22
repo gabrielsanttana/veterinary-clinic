@@ -2,39 +2,19 @@ package view.tableModel;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import model.Veterinary;
 
-public class VeterinaryTableModel extends AbstractTableModel {
-
-    private List<Veterinary> listVeterinary;
-    private String[] colunas = {"ID","Nome","Endereço","Telefone"};    
-
+public class VeterinaryTableModel extends BaseTableModel<Veterinary> {
 
     public VeterinaryTableModel(List<Veterinary> listVeterinary) {
-        this.listVeterinary = listVeterinary; 
+    	super(listVeterinary);
+    	columns = new String[]{"ID","Nome","Endereço","Telefone"};
     }
 
     @Override
-    public String getColumnName(int column) {
-        return colunas[column];
-    } 
-
-    @Override
-    public int getColumnCount() {
-        return colunas.length;
-    }
-
-    @Override
-    public int getRowCount() {
-        return listVeterinary.size();
-    }
-
-    @Override
-    public Object getValueAt(int linha, int coluna) {        
-        Veterinary veterinary = listVeterinary.get(linha);         
-        switch (coluna) {
+    public Object getValueAt(int row, int col) {        
+        Veterinary veterinary = list.get(row);         
+        switch (col) {
 			case 0:
 				return veterinary.getId();
             case 1:

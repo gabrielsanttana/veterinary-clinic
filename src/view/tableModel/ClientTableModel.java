@@ -2,39 +2,21 @@ package view.tableModel;
 
 import java.util.List;
 
-import javax.swing.table.AbstractTableModel;
-
 import model.Client;
 
-public class ClientTableModel extends AbstractTableModel {
+public class ClientTableModel extends BaseTableModel<Client> {
+	
+	private static final long serialVersionUID = 1L;
 
-    private List<Client> listClient;
-    private String[] colunas = {"ID","Nome","Endereço","Telefone","CEP","Email"};    
-
-
-    public ClientTableModel(List<Client> listClient) {
-        this.listClient = listClient; 
+	public ClientTableModel(List<Client> listClient) {
+    	super(listClient);
+    	columns = new String[]{"ID","Nome","Endereço","Telefone","CEP","Email"};
     }
 
     @Override
-    public String getColumnName(int column) {
-        return colunas[column];
-    } 
-
-    @Override
-    public int getColumnCount() {
-        return colunas.length;
-    }
-
-    @Override
-    public int getRowCount() {
-        return listClient.size();
-    }
-
-    @Override
-    public Object getValueAt(int linha, int coluna) {        
-    	Client client = listClient.get(linha);         
-        switch (coluna) {
+    public Object getValueAt(int row, int col) {        
+    	Client client = list.get(row);         
+        switch (col) {
     		case 0:
     			return client.getId();
             case 1:
@@ -50,13 +32,5 @@ public class ClientTableModel extends AbstractTableModel {
         }        
         return null;        
     }
-
-
-
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 8089116544555428084L;
-
 
 }
