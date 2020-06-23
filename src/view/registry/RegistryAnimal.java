@@ -17,8 +17,6 @@ import model.Client;
 public class RegistryAnimal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
-	private Client client;	
 	
 	private JPanel contentPane;
 	private JTextField txtName;
@@ -28,7 +26,7 @@ public class RegistryAnimal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistryAnimal() {
+	public RegistryAnimal(Client client) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 255, 181);
 		contentPane = new JPanel();
@@ -88,8 +86,4 @@ public class RegistryAnimal extends JFrame {
 		contentPane.add(btnCancelar);
 	}
 
-	public void SetClient(Client client) 
-	{
-		this.client = client;
-	}
 }

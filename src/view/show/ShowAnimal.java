@@ -66,8 +66,8 @@ public class ShowAnimal extends JFrame {
 		btnNewAnimal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				RegistryAnimal frame = new RegistryAnimal();
-				frame.SetClient(client);
+				// TODO get selected client
+				RegistryAnimal frame = new RegistryAnimal(client);
 				frame.setVisible(true);
 				dispose();
 			}			

@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 import controller.Controller;
 import model.Treatment;
 import model.Veterinary;
-import view.tableModel.VeterinaryComboModel;
+import view.comboBoxModel.VeterinaryComboBoxModel;
 
 public class RegistryConsult extends JFrame {
 
@@ -61,7 +61,7 @@ public class RegistryConsult extends JFrame {
 		comboBoxVet = new JComboBox<Veterinary>();
 		comboBoxVet.setBounds(66, 77, 163, 22);
 		listVeterinary = Controller.getAllVeterinary();
-		VeterinaryComboModel model = new VeterinaryComboModel(listVeterinary);
+		VeterinaryComboBoxModel model = new VeterinaryComboBoxModel(listVeterinary);
 		comboBoxVet.setModel(model);		
 		contentPane.add(comboBoxVet);
 		
