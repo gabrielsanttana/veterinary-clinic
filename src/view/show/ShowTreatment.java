@@ -31,9 +31,6 @@ public class ShowTreatment extends JFrame {
     private JButton btnSeeConsults;
     private JButton btnNewConsult;
 
-	/**
-	 * Create the frame.
-	 */
 	public ShowTreatment(Animal animal) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 606, 300);
@@ -50,7 +47,7 @@ public class ShowTreatment extends JFrame {
 		contentPane.add(table);
 		listTreatment = Controller.getAllTreatment();
 		model = new TreatmentTableModel(listTreatment);
-		// TODO Only show the animal treat
+		// TODO Only show the right animal treat
 		table.setModel(model);
 		if (table.getRowCount() > 0)
 			table.setRowSelectionInterval(0, 0);
@@ -66,7 +63,7 @@ public class ShowTreatment extends JFrame {
 		btnSeeConsults.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				RegistryConsult frame = new RegistryConsult();				
+				RegistryConsult frame = new RegistryConsult(GetSelectedTreat());				
 				frame.setVisible(true);
 				dispose();
 			}			
@@ -78,8 +75,7 @@ public class ShowTreatment extends JFrame {
 		btnSeeConsults.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Treatment treat = GetConsultFromTable();
-				ShowConsult frame = new ShowConsult(treat);
+				ShowConsult frame = new ShowConsult(GetSelectedTreat());
 				frame.setVisible(true);
 				dispose();
 			}			
@@ -87,9 +83,10 @@ public class ShowTreatment extends JFrame {
 		contentPane.add(btnSeeConsults);
 	}
 	
-	private Treatment GetConsultFromTable() 
+	private Treatment GetSelectedTreat() 
 	{
-		int index = table.getSelectedRow();
-		return listTreatment.get(table.convertRowIndexToModel(index));	
+		// TODO
+		return null;		
 	}
+	
 }

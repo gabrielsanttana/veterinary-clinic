@@ -45,6 +45,7 @@ public class ShowVeterinary extends JFrame {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBounds(10, 51, 414, 199);
 		contentPane.add(table);
+		
 		listVeterinary = Controller.getAllVeterinary();
 		model = new VeterinaryTableModel(listVeterinary);
 		table.setModel(model);

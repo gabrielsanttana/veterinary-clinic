@@ -26,11 +26,7 @@ public class Treatment {
 		this.animal = animal;
 	}
 	
-	public Treatment() {
-		// TODO Auto-generated constructor stub
-	}
-
-
+	public Treatment() { }
 	
 	public String getStartDateSQL() {
 		return Util.DateToStringSQL(this.startDate);

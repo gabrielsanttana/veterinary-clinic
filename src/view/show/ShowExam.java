@@ -31,7 +31,7 @@ public class ShowExam extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ShowExam() {
+	public ShowExam(Consult consult) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -47,6 +47,7 @@ public class ShowExam extends JFrame {
 		contentPane.add(table);
 		listExam = Controller.getAllExam();
 		model = new ExamTableModel(listExam);
+		//TODO show only Consult Exams
 		table.setModel(model);
 		if (table.getRowCount() > 0)
 			table.setRowSelectionInterval(0, 0);

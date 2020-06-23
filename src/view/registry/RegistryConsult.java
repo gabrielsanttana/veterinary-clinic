@@ -2,8 +2,11 @@ package view.registry;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
+import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -12,6 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
+import model.Treatment;
+import model.Veterinary;
+import view.tableModel.VeterinaryComboModel;
 
 public class RegistryConsult extends JFrame {
 
@@ -20,13 +26,15 @@ public class RegistryConsult extends JFrame {
 	private JTextField txtDate;
 	private JTextField txtHistoric;
 	private JButton btnSalvar;
+	private JComboBox<Veterinary> comboBoxVet;
+	private List<Veterinary> listVeterinary;
 	
 	/**
 	 * Create the frame.
 	 */
-	public RegistryConsult() {
+	public RegistryConsult(Treatment treat) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 255, 220);
+		setBounds(100, 100, 255, 187);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -50,26 +58,31 @@ public class RegistryConsult extends JFrame {
 		txtHistoric.setBounds(66, 42, 162, 20);
 		contentPane.add(txtHistoric);
 		
-		JLabel lbl3 = new JLabel("Tratamento");
-		lbl3.setBounds(10, 74, 56, 14);
-		contentPane.add(lbl3);
+		comboBoxVet = new JComboBox<Veterinary>();
+		comboBoxVet.setBounds(66, 77, 163, 22);
+		listVeterinary = Controller.getAllVeterinary();
+		VeterinaryComboModel model = new VeterinaryComboModel(listVeterinary);
+		comboBoxVet.setModel(model);		
+		contentPane.add(comboBoxVet);
 		
 		JLabel lbl4 = new JLabel("Veterinary");
-		lbl4.setBounds(10, 105, 56, 14);
+		lbl4.setBounds(10, 81, 56, 14);
 		contentPane.add(lbl4);
 		
 		btnSalvar = new JButton("Salvar");
 		btnSalvar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.addConsult(txtDate,txtHistoric.getText(),null,null);
-						
+				// TODO txtDate to Date
+				Date date = null;
+				Veterinary vet = (Veterinary)comboBoxVet.getSelectedItem();
+				Controller.addConsult(date, txtHistoric.getText(), treat.getId(), vet.getId());		
 				JOptionPane.showMessageDialog(null, "Success", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
 				dispose();
 			}
 		});
 		
-		btnSalvar.setBounds(10, 150, 89, 23);
+		btnSalvar.setBounds(10, 117, 89, 23);
 		contentPane.add(btnSalvar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -79,8 +92,7 @@ public class RegistryConsult extends JFrame {
 				dispose();
 			}
 		});
-		btnCancelar.setBounds(140, 150, 89, 23);
+		btnCancelar.setBounds(140, 117, 89, 23);
 		contentPane.add(btnCancelar);
 	}
-	
 }

@@ -27,11 +27,6 @@ public class VeterinaryTableModel extends BaseTableModel<Veterinary> {
         return null;        
     }
 
-
-
-    /**
-     * 
-     */
     private static final long serialVersionUID = 8089116544555428084L;
 
 

@@ -25,9 +25,7 @@ public class Veterinary {
 		this.consults = consults;
 	}
 
-	public Veterinary() {
-		// TODO Auto-generated constructor stub
-	}
+	public Veterinary() {}
 
 	public List<Consult> getConsults() {
 		return consults;
