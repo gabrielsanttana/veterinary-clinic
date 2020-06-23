@@ -49,14 +49,15 @@ public class AnimalDAO extends DAO {
 
 // Partial CRUD    
     // Create
-    public void addAnimal(String animalName, int animalAge, String animalSex, int clientId) {
+    public void addAnimal(String animalName, int animalAge, String animalSex, int speciesId, int clientId) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (animalName,animalAge,animalSex,clientId) VALUES (?,?,?,?)");
+            stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (animalName,animalAge,animalSex,speciesId,clientId) VALUES (?,?,?,?,?)");
             stmt.setString(1, animalName);
             stmt.setInt(2, animalAge);
             stmt.setString(3, animalSex);
-            stmt.setInt(4, clientId);
+            stmt.setInt(4, speciesId);
+            stmt.setInt(5, clientId);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);

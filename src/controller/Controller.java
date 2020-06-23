@@ -165,8 +165,8 @@ public class Controller {
 	// --------------------------------------------------------------------------------
 
 
-	public static void addAnimal(String animalName, int animalAge, String animalSex, int clientId) {
-		AnimalDAO.getInstance().addAnimal(animalName, animalAge, animalSex, clientId);
+	public static void addAnimal(String animalName, int animalAge, String animalSex, int speciesId, int clientId) {
+		AnimalDAO.getInstance().addAnimal(animalName, animalAge, animalSex, speciesId, clientId);
 	}
 	
 	public static void addCliente(String name, String address, String email, String phone, String cep) {
