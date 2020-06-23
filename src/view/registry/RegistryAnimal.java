@@ -2,6 +2,7 @@ package view.registry;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,6 +14,12 @@ import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
 import model.Client;
+import model.Species;
+
+import javax.swing.JComboBox;
+import model.Veterinary;
+import view.comboBoxModel.SpeciesComboBoxModel;
+import view.comboBoxModel.VeterinaryComboBoxModel;
 
 public class RegistryAnimal extends JFrame {
 
@@ -22,13 +29,14 @@ public class RegistryAnimal extends JFrame {
 	private JTextField txtName;
 	private JTextField txtAge;
 	private JTextField txtSex;
+	List<Species> listSpecies;
 	
 	/**
 	 * Create the frame.
 	 */
 	public RegistryAnimal(Client client) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 255, 181);
+		setBounds(100, 100, 255, 230);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -72,7 +80,7 @@ public class RegistryAnimal extends JFrame {
 			}
 		});
 		
-		btnSalvar.setBounds(10, 102, 89, 23);
+		btnSalvar.setBounds(10, 157, 89, 23);
 		contentPane.add(btnSalvar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -82,8 +90,18 @@ public class RegistryAnimal extends JFrame {
 				dispose();
 			}
 		});
-		btnCancelar.setBounds(139, 102, 89, 23);
+		btnCancelar.setBounds(139, 157, 89, 23);
 		contentPane.add(btnCancelar);
+		
+		JLabel lblSpecie = new JLabel("Specie");
+		lblSpecie.setBounds(10, 117, 56, 14);
+		contentPane.add(lblSpecie);
+		
+		JComboBox<Species> comboBoxSpecie = new JComboBox<Species>();
+		comboBoxSpecie.setBounds(66, 113, 163, 22);
+		listSpecies = Controller.getAllSpecies();
+		SpeciesComboBoxModel model = new SpeciesComboBoxModel(listSpecies);
+		comboBoxSpecie.setModel(model);
+		contentPane.add(comboBoxSpecie);		
 	}
-
 }

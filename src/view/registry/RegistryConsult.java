@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
 import model.Treatment;
+import model.Util;
 import model.Veterinary;
 import view.comboBoxModel.VeterinaryComboBoxModel;
 
@@ -73,9 +74,8 @@ public class RegistryConsult extends JFrame {
 		btnSalvar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO txtDate to Date
-				Date date = null;
 				Veterinary vet = (Veterinary)comboBoxVet.getSelectedItem();
+				Date date = Util.StringToOnlyDate(txtDate.getText());
 				Controller.addConsult(date, txtHistoric.getText(), treat.getId(), vet.getId());		
 				JOptionPane.showMessageDialog(null, "Success", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
 				dispose();

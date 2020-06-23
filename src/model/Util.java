@@ -9,23 +9,24 @@ import java.util.logging.Logger;
 
 public class Util {
 	
-	public static String DateToStringSQL(Date d) {
+	
+	
+	public static String DateToStringSQL(Date strDate) {
 		String ts = null;
 		try {
 		    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		    Timestamp timestamp = new Timestamp(d.getTime());
+		    Timestamp timestamp = new Timestamp(strDate.getTime());
 		    ts = sdf.format(timestamp);
 		} catch (Exception e) {
             Logger.getLogger(Treatment.class.getName()).log(Level.SEVERE, null, e);
-			// TODO: handle exception
 		}
 	    return ts;
 	}
 	
-	public static Date StringToDate(String d){
+	public static Date StringToDate(String strDate){
 		Date date = new Date(); 
 		try {
-			date=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(d);
+			date= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(strDate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}  
@@ -33,5 +34,15 @@ public class Util {
 		    
 	}  
 
+	public static Date StringToOnlyDate(String strDate) 
+	{
+		try {
+			return new SimpleDateFormat("dd/MM/yyyy").parse(strDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}		
+		return null;
+	}
+	
 
 }

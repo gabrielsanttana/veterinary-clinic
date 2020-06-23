@@ -9,8 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import view.registry.RegistryClient;
+import view.registry.RegistrySpecie;
 import view.registry.RegistryVet;
 import view.show.ShowClient;
+import view.show.ShowSpecies;
 import view.show.ShowVeterinary;
 
 public final class MainFrame extends JFrame {
@@ -24,7 +26,7 @@ public final class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 375, 175);
+		setBounds(100, 100, 532, 175);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -38,7 +40,7 @@ public final class MainFrame extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnNewClient.setBounds(180, 11, 160, 40);
+		btnNewClient.setBounds(350, 11, 160, 40);
 		contentPane.add(btnNewClient);
 		
 		JButton btnShowClients = new JButton("Show Clientes");
@@ -49,7 +51,7 @@ public final class MainFrame extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnShowClients.setBounds(180, 85, 160, 40);
+		btnShowClients.setBounds(350, 85, 160, 40);
 		contentPane.add(btnShowClients);
 		
 		JButton btnNewVet = new JButton("Novo Veterinario");
@@ -60,7 +62,7 @@ public final class MainFrame extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnNewVet.setBounds(10, 11, 160, 40);
+		btnNewVet.setBounds(180, 11, 160, 40);
 		contentPane.add(btnNewVet);
 		
 		JButton btnShowVets = new JButton("Mostrar Veterinarios");
@@ -71,9 +73,31 @@ public final class MainFrame extends JFrame {
 				frame.setVisible(true);
 			}
 		});
-		btnShowVets.setBounds(10, 85, 160, 40);
+		btnShowVets.setBounds(180, 85, 160, 40);
 		contentPane.add(btnShowVets);
 
 
+		JButton btnNewSpecie = new JButton("Novo Species");
+		btnNewSpecie.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				RegistrySpecie frame = new RegistrySpecie();
+				frame.setVisible(true);
+			}
+		});
+		btnNewSpecie.setBounds(10, 11, 160, 40);
+		contentPane.add(btnNewSpecie);
+		
+		JButton btnShowSpecie = new JButton("Mostrar Species");
+		btnShowSpecie.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ShowSpecies frame = new ShowSpecies();
+				frame.setVisible(true);
+			}
+		});
+		btnShowSpecie.setBounds(10, 85, 160, 40);
+		contentPane.add(btnShowSpecie);
+		
 	}
 }

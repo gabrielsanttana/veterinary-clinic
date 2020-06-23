@@ -2,7 +2,6 @@ package view.registry;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,59 +12,45 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controller.Controller;
-import model.Animal;
-import model.Util;
 
-public class RegistryTreatment extends JFrame {
+public class RegistrySpecie extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
-	private JTextField txtStartDate;
-	private JTextField txtEndDate;
-	private JButton btnSalvar;
+	private JTextField txtNameSpecie;
 	
 	/**
 	 * Create the frame.
 	 */
-	public RegistryTreatment(Animal animal) {
+	public RegistrySpecie() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 255, 200);
+		setBounds(100, 100, 255, 150);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtStartDate = new JTextField();
-		txtStartDate.setBounds(10, 33, 162, 20);
-		contentPane.add(txtStartDate);
-		txtStartDate.setColumns(10);
+		txtNameSpecie = new JTextField();
+		txtNameSpecie.setBounds(10, 39, 219, 20);
+		contentPane.add(txtNameSpecie);
+		txtNameSpecie.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Start Date");
+		JLabel lblNewLabel = new JLabel("Nome Especie");
 		lblNewLabel.setBounds(10, 14, 162, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel2 = new JLabel("End Date");
-		lblNewLabel2.setBounds(10, 64, 162, 14);
-		contentPane.add(lblNewLabel2);
-		
-		txtEndDate = new JTextField();
-		txtEndDate.setColumns(10);
-		txtEndDate.setBounds(10, 89, 162, 20);
-		contentPane.add(txtEndDate);
-		
-		btnSalvar = new JButton("Salvar");
+		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Date startDate = Util.StringToOnlyDate(txtStartDate.getText());
-				Date endDate = Util.StringToOnlyDate(txtEndDate.getText());
-				Controller.addTreatment(startDate, endDate, animal.getId());
+				Controller.addSpecies(txtNameSpecie.getText());
 				JOptionPane.showMessageDialog(null, "Success", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
 				dispose();
 			}
 		});
 		
-		btnSalvar.setBounds(10, 120, 89, 23);
+		btnSalvar.setBounds(10, 73, 89, 23);
 		contentPane.add(btnSalvar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -75,7 +60,8 @@ public class RegistryTreatment extends JFrame {
 				dispose();
 			}
 		});
-		btnCancelar.setBounds(140, 120, 89, 23);
+		btnCancelar.setBounds(140, 73, 89, 23);
 		contentPane.add(btnCancelar);
 	}
+
 }
