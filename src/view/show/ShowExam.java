@@ -45,9 +45,8 @@ public class ShowExam extends JFrame {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBounds(10, 51, 414, 199);
 		contentPane.add(table);
-		listExam = Controller.getAllExam();
+		listExam = Controller.getExamByConsultId(consult.getId());
 		model = new ExamTableModel(listExam);
-		//TODO show only Consult Exams
 		table.setModel(model);
 		if (table.getRowCount() > 0)
 			table.setRowSelectionInterval(0, 0);

@@ -49,9 +49,9 @@ public class ShowAnimal extends JFrame {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBounds(10, 51, 414, 199);
 		contentPane.add(table);
-		listAnimal = Controller.getAllAnimal();
+		listAnimal = Controller.getAnimalsByClient(client.getId());
 		model = new AnimalTableModel(listAnimal);
-		// TODO show only the selected client animals
+		// TODO BUG IN SPECIE SHOW LIST
 		table.setModel(model);
 		if (table.getRowCount() > 0)
 			table.setRowSelectionInterval(0, 0);
@@ -66,7 +66,6 @@ public class ShowAnimal extends JFrame {
 		btnNewAnimal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO get selected client
 				RegistryAnimal frame = new RegistryAnimal(client);
 				frame.setVisible(true);
 				dispose();
@@ -105,6 +104,10 @@ public class ShowAnimal extends JFrame {
 	public Animal GetAnimalFromTable() 
 	{
 		int index = table.getSelectedRow();
-		return listAnimal.get(table.convertRowIndexToModel(index));
+		return listAnimal.get(index);
+		
+		// Tabela	listAnimal.get(table.convertRowIndexToModel(index));
+		// Lista	listAnimal.get(index);
+		// Banco	Controller.getAnimalById(index);	
 	}
 }

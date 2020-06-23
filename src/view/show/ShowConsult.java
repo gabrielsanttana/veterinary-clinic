@@ -47,9 +47,8 @@ public class ShowConsult extends JFrame {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBounds(10, 51, 414, 199);
 		contentPane.add(table);
-		listConsult = Controller.getAllConsult();
+		listConsult = Controller.getConsultByTreatmentId(treat.getId());
 		model = new ConsultTableModel(listConsult);
-		//TODO show only the treatment consult
 		table.setModel(model);
 		if (table.getRowCount() > 0)
 			table.setRowSelectionInterval(0, 0);
@@ -62,7 +61,7 @@ public class ShowConsult extends JFrame {
 		
 		btnNewConsult = new JButton("Marcar Exames");
 		btnNewConsult.setBounds(434, 51, 153, 35);
-		btnSeeConsults.addMouseListener(new MouseAdapter() {
+		btnNewConsult.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {				
 				RegistryExam frame = new RegistryExam(GetSelectedConsult());			
@@ -85,9 +84,9 @@ public class ShowConsult extends JFrame {
 		contentPane.add(btnSeeConsults);
 	}
 
-	private Consult GetSelectedConsult() {
-		
-		return null;
+	private Consult GetSelectedConsult() {		
+		int index = table.getSelectedRow();
+		return listConsult.get(index);
 	}
 	
 }

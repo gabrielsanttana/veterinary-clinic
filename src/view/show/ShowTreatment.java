@@ -45,9 +45,8 @@ public class ShowTreatment extends JFrame {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBounds(10, 51, 414, 199);
 		contentPane.add(table);
-		listTreatment = Controller.getAllTreatment();
+		listTreatment = Controller.getTreatmentByAnimalId(animal.getId());
 		model = new TreatmentTableModel(listTreatment);
-		// TODO Only show the right animal treat
 		table.setModel(model);
 		if (table.getRowCount() > 0)
 			table.setRowSelectionInterval(0, 0);
@@ -60,9 +59,9 @@ public class ShowTreatment extends JFrame {
 		
 		btnNewConsult = new JButton("Marcar Consulta");
 		btnNewConsult.setBounds(434, 51, 153, 35);
-		btnSeeConsults.addMouseListener(new MouseAdapter() {
+		btnNewConsult.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) {				
 				RegistryConsult frame = new RegistryConsult(GetSelectedTreat());				
 				frame.setVisible(true);
 				dispose();
@@ -85,8 +84,8 @@ public class ShowTreatment extends JFrame {
 	
 	private Treatment GetSelectedTreat() 
 	{
-		// TODO
-		return null;		
+		int index = table.getSelectedRow();
+		return listTreatment.get(index);
 	}
 	
 }

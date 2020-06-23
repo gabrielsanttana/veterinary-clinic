@@ -66,4 +66,9 @@ public class Veterinary {
 	public void setVeterinaryPhone(String veterinaryPhone) {
 		this.veterinaryPhone = veterinaryPhone;
 	}
+	
+    @Override
+    public String toString() {
+    	return veterinaryName;
+    }
 }

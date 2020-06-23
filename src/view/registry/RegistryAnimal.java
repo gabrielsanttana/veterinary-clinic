@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -15,11 +16,7 @@ import javax.swing.border.EmptyBorder;
 import controller.Controller;
 import model.Client;
 import model.Species;
-
-import javax.swing.JComboBox;
-import model.Veterinary;
 import view.comboBoxModel.SpeciesComboBoxModel;
-import view.comboBoxModel.VeterinaryComboBoxModel;
 
 public class RegistryAnimal extends JFrame {
 
@@ -65,6 +62,17 @@ public class RegistryAnimal extends JFrame {
 		txtSex.setBounds(66, 71, 162, 20);
 		contentPane.add(txtSex);
 		
+		JLabel lblSpecie = new JLabel("Specie");
+		lblSpecie.setBounds(10, 117, 56, 14);
+		contentPane.add(lblSpecie);
+		
+		JComboBox<Species> comboBoxSpecie = new JComboBox<Species>();
+		comboBoxSpecie.setBounds(66, 113, 163, 22);
+		listSpecies = Controller.getAllSpecies();
+		SpeciesComboBoxModel model = new SpeciesComboBoxModel(listSpecies);
+		comboBoxSpecie.setModel(model);
+		contentPane.add(comboBoxSpecie);
+		
 		JLabel lblPhone = new JLabel("Sex");
 		lblPhone.setBounds(10, 74, 46, 14);
 		contentPane.add(lblPhone);
@@ -73,8 +81,8 @@ public class RegistryAnimal extends JFrame {
 		btnSalvar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Controller.addAnimal(txtName.getText(), Integer.parseInt(txtAge.getText()),
-						txtSex.getText(), client.getId());
+				Controller.addAnimal(txtName.getText(), Integer.parseInt(txtAge.getText()), txtSex.getText(), 
+						((Species)comboBoxSpecie.getSelectedItem()).getId(),client.getId());
 				JOptionPane.showMessageDialog(null, "Success", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
 				dispose();
 			}
@@ -92,16 +100,6 @@ public class RegistryAnimal extends JFrame {
 		});
 		btnCancelar.setBounds(139, 157, 89, 23);
 		contentPane.add(btnCancelar);
-		
-		JLabel lblSpecie = new JLabel("Specie");
-		lblSpecie.setBounds(10, 117, 56, 14);
-		contentPane.add(lblSpecie);
-		
-		JComboBox<Species> comboBoxSpecie = new JComboBox<Species>();
-		comboBoxSpecie.setBounds(66, 113, 163, 22);
-		listSpecies = Controller.getAllSpecies();
-		SpeciesComboBoxModel model = new SpeciesComboBoxModel(listSpecies);
-		comboBoxSpecie.setModel(model);
-		contentPane.add(comboBoxSpecie);		
+			
 	}
 }
