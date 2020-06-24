@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -36,7 +37,7 @@ public class ShowConsult extends JFrame {
 	 */
 	public ShowConsult(Treatment treat) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 614, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -56,17 +57,24 @@ public class ShowConsult extends JFrame {
 		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Consult: TreatmentID " + treat.getId());
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewJgoodiesTitle.setBounds(144, 11, 142, 29);
+		lblNewJgoodiesTitle.setBounds(10, 11, 280, 29);
 		contentPane.add(lblNewJgoodiesTitle);
+		
+		boolean isEmpty = table.getRowCount() > 0;
 		
 		btnNewConsult = new JButton("Marcar Exames");
 		btnNewConsult.setBounds(434, 51, 153, 35);
 		btnNewConsult.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {				
-				RegistryExam frame = new RegistryExam(GetSelectedConsult());			
-				frame.setVisible(true);
-				dispose();
+				if (isEmpty)
+				{
+					RegistryExam frame = new RegistryExam(GetSelectedConsult());			
+					frame.setVisible(true);
+					dispose();
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Selecione um Consulta", "WarningBox: ", JOptionPane.WARNING_MESSAGE);
 			}			
 		});
 		contentPane.add(btnNewConsult);
@@ -76,9 +84,14 @@ public class ShowConsult extends JFrame {
 		btnSeeConsults.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ShowExam frame = new ShowExam(GetSelectedConsult());
-				frame.setVisible(true);
-				dispose();
+				if (isEmpty) 
+				{
+					ShowExam frame = new ShowExam(GetSelectedConsult());
+					frame.setVisible(true);
+					dispose();
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Selecione um Consulta", "WarningBox: ", JOptionPane.WARNING_MESSAGE);
 			}	
 		});
 		contentPane.add(btnSeeConsults);

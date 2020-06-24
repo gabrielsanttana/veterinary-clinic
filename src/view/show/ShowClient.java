@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -58,18 +59,23 @@ public class ShowClient extends JFrame {
 		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Client");
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewJgoodiesTitle.setBounds(10, 11, 142, 29);
+		lblNewJgoodiesTitle.setBounds(10, 11, 244, 29);
 		contentPane.add(lblNewJgoodiesTitle);
 		
-		btnFind = new JButton("Find");
+		btnFind = new JButton("Selecinar");
 		btnFind.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int index = table.getSelectedRow();
-				Client client = listClient.get(table.convertRowIndexToModel(index));
-				ShowAnimal animalList = new ShowAnimal(client);
-				animalList.setVisible(true);
-				dispose();
+				if (table.getRowCount() > 0)
+				{
+					int index = table.getSelectedRow();
+					Client client = listClient.get(table.convertRowIndexToModel(index));
+					ShowAnimal animalList = new ShowAnimal(client);
+					animalList.setVisible(true);
+					dispose();
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Selecione um cliente", "WarningBox: ", JOptionPane.WARNING_MESSAGE);
 			}
 		});
 		btnFind.setBounds(268, 17, 156, 23);

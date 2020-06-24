@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -47,10 +48,10 @@ public class ShowAnimal extends JFrame {
 		table.setToolTipText("");
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setBounds(10, 51, 414, 199);
-		contentPane.add(table);
+		contentPane.add(table);	
+		
 		listAnimal = Controller.getAnimalsByClient(client.getId());
 		model = new AnimalTableModel(listAnimal);
-		// TODO BUG IN SPECIE SHOW LIST
 		table.setModel(model);
 		if (table.getRowCount() > 0)
 			table.setRowSelectionInterval(0, 0);
@@ -73,15 +74,22 @@ public class ShowAnimal extends JFrame {
 		btnNewAnimal.setBounds(264, 11, 160, 29);
 		contentPane.add(btnNewAnimal);
 		
+		boolean isEmpty = table.getRowCount() > 0;
+		
 		JButton btnNewTreatment = new JButton("Marcar Tratamento");
 		btnNewTreatment.setBounds(434, 52, 153, 35);
 		btnNewTreatment.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Animal animal = GetAnimalFromTable();
-				RegistryTreatment frame = new RegistryTreatment(animal);				
-				frame.setVisible(true);
-				dispose();
+				if (isEmpty)
+				{
+					Animal animal = GetAnimalFromTable();
+					RegistryTreatment frame = new RegistryTreatment(animal);				
+					frame.setVisible(true);
+					dispose();
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Selecione um animal", "WarningBox: ", JOptionPane.WARNING_MESSAGE);
 			}			
 		});
 		contentPane.add(btnNewTreatment);
@@ -91,10 +99,15 @@ public class ShowAnimal extends JFrame {
 		btnSeeTreatments.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Animal animal = GetAnimalFromTable();
-				ShowTreatment frame = new ShowTreatment(animal);
-				frame.setVisible(true);
-				dispose();
+				if (isEmpty)
+				{
+					Animal animal = GetAnimalFromTable();
+					ShowTreatment frame = new ShowTreatment(animal);
+					frame.setVisible(true);
+					dispose();
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Selecione um animal", "WarningBox: ", JOptionPane.WARNING_MESSAGE);				
 			}			
 		});
 		contentPane.add(btnSeeTreatments);

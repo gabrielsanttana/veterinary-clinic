@@ -5,20 +5,21 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-
 import controller.Controller;
-import model.*;
+import model.Animal;
+import model.Treatment;
 import view.registry.RegistryConsult;
-import view.tableModel.*;
-import javax.swing.JButton;
+import view.tableModel.TreatmentTableModel;
 
 
 public class ShowTreatment extends JFrame {
@@ -54,17 +55,24 @@ public class ShowTreatment extends JFrame {
 		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Treatment: AnimalID" + animal.getId());
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewJgoodiesTitle.setBounds(10, 11, 142, 29);
+		lblNewJgoodiesTitle.setBounds(10, 11, 414, 29);
 		contentPane.add(lblNewJgoodiesTitle);
+		
+		boolean isEmpty = table.getRowCount() > 0;
 		
 		btnNewConsult = new JButton("Marcar Consulta");
 		btnNewConsult.setBounds(434, 51, 153, 35);
 		btnNewConsult.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {				
-				RegistryConsult frame = new RegistryConsult(GetSelectedTreat());				
-				frame.setVisible(true);
-				dispose();
+			public void mouseClicked(MouseEvent e) {		
+				if (isEmpty) 
+				{
+					RegistryConsult frame = new RegistryConsult(GetSelectedTreat());				
+					frame.setVisible(true);
+					dispose();
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Selecione um tratamento", "WarningBox: ", JOptionPane.WARNING_MESSAGE);
 			}			
 		});
 		contentPane.add(btnNewConsult);
@@ -74,9 +82,14 @@ public class ShowTreatment extends JFrame {
 		btnSeeConsults.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ShowConsult frame = new ShowConsult(GetSelectedTreat());
-				frame.setVisible(true);
-				dispose();
+				if (isEmpty)
+				{
+					ShowConsult frame = new ShowConsult(GetSelectedTreat());
+					frame.setVisible(true);
+					dispose();
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Selecione um Tratamento", "WarningBox: ", JOptionPane.WARNING_MESSAGE);
 			}			
 		});
 		contentPane.add(btnSeeConsults);
