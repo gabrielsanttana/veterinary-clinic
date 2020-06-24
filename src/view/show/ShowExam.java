@@ -52,7 +52,7 @@ public class ShowExam extends JFrame {
 			table.setRowSelectionInterval(0, 0);
 
 		
-		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Exam");
+		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Exam: ConsultID " + consult.getId());
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewJgoodiesTitle.setBounds(144, 11, 142, 29);

@@ -51,7 +51,7 @@ public class ShowTreatment extends JFrame {
 		if (table.getRowCount() > 0)
 			table.setRowSelectionInterval(0, 0);
 		
-		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Treatment");
+		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Treatment: AnimalID" + animal.getId());
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewJgoodiesTitle.setBounds(10, 11, 142, 29);
@@ -85,7 +85,7 @@ public class ShowTreatment extends JFrame {
 	private Treatment GetSelectedTreat() 
 	{
 		int index = table.getSelectedRow();
-		return listTreatment.get(index);
+		return listTreatment.get(table.convertRowIndexToModel(index));
 	}
 	
 }

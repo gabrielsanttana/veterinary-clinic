@@ -53,7 +53,7 @@ public class ShowConsult extends JFrame {
 		if (table.getRowCount() > 0)
 			table.setRowSelectionInterval(0, 0);
 		
-		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Consult");
+		JLabel lblNewJgoodiesTitle = new JLabel("Lista de Consult: TreatmentID " + treat.getId());
 		lblNewJgoodiesTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewJgoodiesTitle.setBounds(144, 11, 142, 29);
@@ -86,7 +86,7 @@ public class ShowConsult extends JFrame {
 
 	private Consult GetSelectedConsult() {		
 		int index = table.getSelectedRow();
-		return listConsult.get(index);
+		return listConsult.get(table.convertRowIndexToModel(index));
 	}
 	
 }

@@ -1,8 +1,11 @@
 package view.show;
 
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,16 +14,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-
 import controller.Controller;
 import model.Animal;
 import model.Client;
 import view.registry.RegistryAnimal;
 import view.registry.RegistryTreatment;
-import view.tableModel.*;
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import view.tableModel.AnimalTableModel;
 
 
 public class ShowAnimal extends JFrame {
@@ -104,7 +103,7 @@ public class ShowAnimal extends JFrame {
 	public Animal GetAnimalFromTable() 
 	{
 		int index = table.getSelectedRow();
-		return listAnimal.get(index);
+		return listAnimal.get(table.convertRowIndexToModel(index));
 		
 		// Tabela	listAnimal.get(table.convertRowIndexToModel(index));
 		// Lista	listAnimal.get(index);
