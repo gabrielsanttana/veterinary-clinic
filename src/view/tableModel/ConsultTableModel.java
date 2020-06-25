@@ -23,9 +23,7 @@ public class ConsultTableModel extends BaseTableModel<Consult> {
                 return consult.getHistoric();    
             case 3:
             	if (consult.getTreatment() != null) {
-            		if(consult.getTreatment().getAnimal() != null) {
-            			return consult.getTreatment().getAnimal().getAnimalName();
-            		}
+                    return consult.getTreatment().getId();
             	}
                 return null; 
             case 4:
